@@ -43,6 +43,30 @@ export default function Lab1() {
                     to render the gaps.
                 </p>
             </div>
+            <div id="wd-lists">
+                <h4>List Tags</h4>
+                <h5>Ordered List Tag</h5>
+                How to make pancakes:
+                <ol id="wd-pancakes">
+                    <li>Mix dry ingredients.</li>
+                    <li>Add wet ingredients.</li>
+                    <li>Stir to combine.</li>
+                    <li>Heat a skillet or griddle.</li>
+                    <li>Pour batter onto the skillet.</li>
+                    <li>Cook until bubbly on top.</li>
+                    <li>Flip and cook the other side.</li>
+                    <li>Serve and enjoy!</li>
+                </ol>
+                How to make cup noodles:
+                <ol id="wd-cup-noodle-reciple">
+                    <li>Boil hot water.</li>
+                    <li>Open cup noodle lid.</li>
+                    <li>Open and empty vegetable and seasoning packet into the cup.</li>
+                    <li>Pour hot water into the cup until the fill line.</li>
+                    <li>Close the lid and wait 3 minutes.</li>
+                    <li>Open lid, stir and enjoy!</li>
+                </ol>
+            </div>
         </div>
     );
 }
