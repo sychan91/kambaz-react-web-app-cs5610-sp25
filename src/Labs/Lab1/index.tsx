@@ -75,6 +75,12 @@ export default function Lab1() {
                     <li>Red Mars</li>
                     <li>The Forever War</li>
                 </ul>
+                My Favorite Books (in no particular order)
+                <ul id="wd-my-books-2">
+                    <li>Harry Potter and the Sorcerer's Stone</li>
+                    <li>To Kill a Mockingbird</li>
+                    <li>Animal Farm</li>
+                </ul>
             </div>
         </div>
     );
