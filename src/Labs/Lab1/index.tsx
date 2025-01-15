@@ -66,6 +66,15 @@ export default function Lab1() {
                     <li>Close the lid and wait 3 minutes.</li>
                     <li>Open lid, stir and enjoy!</li>
                 </ol>
+                <h5>Unordered List Tag</h5>
+                My favorite books (in no particular order)
+                <ul id="wd-my-books">
+                    <li>Dune</li>
+                    <li>Lord of the Rings</li>
+                    <li>Ender's Game</li>
+                    <li>Red Mars</li>
+                    <li>The Forever War</li>
+                </ul>
             </div>
         </div>
     );
