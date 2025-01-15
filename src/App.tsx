@@ -1,11 +1,14 @@
 import Labs from "./Labs";
-import { HashRouter } from "react-router";
+import { HashRouter, Route, Routes, Navigate } from "react-router";
 
 function App() {
   return (
     <HashRouter>
       <div>
-        <Labs />
+        <Routes>
+          <Route path="/" element={<Navigate to="Labs" />} />
+          <Route path="/Labs/*" element={<Labs />}/>
+        </Routes>
       </div>
     </HashRouter>
   );
