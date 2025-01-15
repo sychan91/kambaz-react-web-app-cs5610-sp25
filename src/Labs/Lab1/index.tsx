@@ -283,6 +283,10 @@ export default function Lab1() {
                         value="2025-01-01"
                         id="wd-text-fields-dob" /> <br />
             </div>
+            <div id="wd-anchor-tags">
+                <h4>Anchor tag</h4>
+                Please <a href="https://lipsum.com" id="wd-lipsum">click here</a> to get dummy text<br/>
+            </div>
         </div>
     );
 }
