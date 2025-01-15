@@ -1,10 +1,13 @@
 import Labs from "./Labs";
+import { HashRouter } from "react-router";
 
 function App() {
   return (
-    <div>
-      <Labs />
-    </div>
+    <HashRouter>
+      <div>
+        <Labs />
+      </div>
+    </HashRouter>
   );
 }
 

@@ -190,7 +190,7 @@ export default function Lab1() {
                 title="The last name"
                 id="wd-text-fields-last-name" />
                 {/* copy rest of form elements here */}
-                </form>
+                {/* </form> */}
                 <h5>Text boxes</h5>
                     <label>Biography:</label><br/>
                     <textarea id="wd-textarea" cols={30} rows={10}>Lorem ipsum dolor sit
@@ -282,10 +282,13 @@ export default function Lab1() {
                 <input type="date"
                         value="2025-01-01"
                         id="wd-text-fields-dob" /> <br />
+                </form>
             </div>
             <div id="wd-anchor-tags">
                 <h4>Anchor tag</h4>
                 Please <a href="https://lipsum.com" id="wd-lipsum">click here</a> to get dummy text<br/>
+                Please <a href="https://github.com/sychan91/kambaz-react-web-app-cs5610-sp25/tree/main" id="wd-github">click here</a> to 
+                go to my github repository.
             </div>
         </div>
     );
