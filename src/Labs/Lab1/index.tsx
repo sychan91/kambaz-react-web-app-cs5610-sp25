@@ -276,7 +276,7 @@ export default function Lab1() {
                         min="1"
                         max="5"
                         placeholder="Doe"
-                        id="wd-text-fields-rating" /> <br />\
+                        id="wd-text-fields-rating" /> <br />
                 
                 <label htmlFor="wd-text-fileds-dob">Date of birth:</label>
                 <input type="date"
