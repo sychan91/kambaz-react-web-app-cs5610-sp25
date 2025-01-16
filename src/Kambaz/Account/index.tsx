@@ -7,7 +7,7 @@ import AccountNavigation from "./Navigation";
 export default function Account() {
     return (
         <div id="wd-account-screen">
-            <table width="50%">
+            <table width="100%">
                 <tr>
                     <td valign="top">
                         <AccountNavigation/>
