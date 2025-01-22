@@ -7,13 +7,13 @@ import AccountNavigation from "./Navigation";
 export default function Account() {
     return (
         <div id="wd-account-screen">
+            <h2>Account</h2>
             <table width="100%">
                 <tr>
                     <td valign="top">
                         <AccountNavigation/>
                     </td>
                     <td>
-                        <h2>Account</h2>
                         <Routes>
                             <Route path="/" element={<Navigate to="/Kambaz/Account/Signin" />} />
                             <Route path="Signin" element={<Signin />} />
