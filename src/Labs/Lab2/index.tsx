@@ -13,6 +13,8 @@ import GridLayout from './GridLayout';
 import Flex from './Flex';
 import ReactIcons from './ReactIcons';
 import BootstrapGrids from './BootstrapGrids';
+import ScreenSizeLabel from './ScreenSizeLabel';
+import BootstrapTables from './BootstrapTables';
 
 export default function Lab2() {
     return (
@@ -111,6 +113,12 @@ export default function Lab2() {
             </div>
             <div>
                 <BootstrapGrids />
+            </div>
+            <div>
+                <ScreenSizeLabel />
+            </div>
+            <div>
+                <BootstrapTables />
             </div>
         </div>
     );
