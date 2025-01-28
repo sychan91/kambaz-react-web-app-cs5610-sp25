@@ -3,6 +3,7 @@
     color: white;
 } */
 
+/* ID Selector Rules*/
 p#wd-id-selector-1 {
     background-color: red;
     color: white;
@@ -11,4 +12,21 @@ p#wd-id-selector-1 {
 p#wd-id-selector-2 {
     background-color: yellow;
     color: black;
+}
+
+/* Class Selector Rules */
+.wd-class-selector {
+    background-color: yellow;
+    color: blue;
+}
+
+/* Document Structure Selector Rules */
+.wd-selector-1 .wd-selector-3 {
+    background-color: red;
+    color: white;
+}
+
+.wd-selector-2 > .wd-selector-3 > .wd-selector-4 {
+    background-color: yellow;
+    color: blue;
 }
