@@ -1,4 +1,5 @@
 import './index.css';
+import ForegroundColors from './ForegroundColors';
 
 export default function Lab2() {
     return (
@@ -55,6 +56,9 @@ export default function Lab2() {
                         </p>
                     </div>
                 </div>
+            </div>
+            <div>
+                <ForegroundColors />
             </div>
         </div>
     );
