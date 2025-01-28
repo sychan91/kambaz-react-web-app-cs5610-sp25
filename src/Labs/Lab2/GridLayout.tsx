@@ -1,7 +1,7 @@
 export default function GridLayout() {
     return (
         <div id='wd-css-grid-layout'>
-            <h2>Grid layour</h2>
+            <h2>Grid layout</h2>
             <div className='wd-grid-row'>
                 <div className='wd-grid-col-half-page wd-bg-color-yellow'>
                     <h3>Left half</h3>
@@ -31,6 +31,7 @@ export default function GridLayout() {
                     <h3>Side bar</h3>
                     <p>This is the right sidebar</p>
                 </div>
+                <div className='wd-grid-row'></div>
             </div>
         </div>
     )

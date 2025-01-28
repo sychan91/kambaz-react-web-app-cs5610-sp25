@@ -10,6 +10,7 @@ import Positions from './Positions';
 import Zindex from './Zindex';
 import Float from './Float';
 import GridLayout from './GridLayout';
+import Flex from './Flex';
 
 export default function Lab2() {
     return (
@@ -99,6 +100,9 @@ export default function Lab2() {
             </div>
             <div>
                 <GridLayout />
+            </div>
+            <div>
+                <Flex />
             </div>
         </div>
     );
