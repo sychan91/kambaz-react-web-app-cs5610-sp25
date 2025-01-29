@@ -1,5 +1,6 @@
 import {
   Form,
+  FormCheck,
   FormControl,
   FormGroup,
   FormLabel,
@@ -23,6 +24,7 @@ export default function BootstrapForms() {
           <FormControl as="textarea" id="textarea1" rows={3} />
         </FormGroup>
       </Form>
+      <br />
       <div id="wd-css-styling-dropdowns">
         <h3>Dropdowns</h3>
         <Form>
@@ -33,6 +35,38 @@ export default function BootstrapForms() {
               <option value="2">Two</option>
               <option value="3">Three</option>
             </FormSelect>
+          </FormGroup>
+        </Form>
+      </div>
+      <br />
+      <div id="wd-css-styling-switches">
+        <h3>Switches</h3>
+        <Form>
+          <FormGroup>
+            <FormCheck
+              type="switch"
+              id="switch"
+              label="Default switch checkbox input"
+            />
+            <FormCheck
+              type="switch"
+              id="switch2"
+              checked
+              label="Checked switch checkbox input"
+            />
+            <FormCheck
+              type="switch"
+              id="switch3"
+              disabled
+              label="Disabled switch checkbox input"
+            />
+            <FormCheck
+              type="switch"
+              id="switch4"
+              checked
+              disabled
+              label="Disabled checked switch checkbox input"
+            />
           </FormGroup>
         </Form>
       </div>

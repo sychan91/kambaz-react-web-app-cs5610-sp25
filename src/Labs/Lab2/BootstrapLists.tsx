@@ -17,6 +17,7 @@ export default function BootstrapLists() {
         </ListGroup.Item>
         <ListGroup.Item className="list-group-item">Star Wars</ListGroup.Item>
       </ListGroup>
+      <br />
       <div id="wd-css-hyperlink-list">
         <h3>Favorite books</h3>
         <ListGroup>

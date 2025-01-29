@@ -81,36 +81,46 @@ export default function Lab2() {
       <div>
         <BackgroundColors />
       </div>
+      <br />
       <div>
         <Borders />
       </div>
+      <br />
       <div>
         <Padding />
       </div>
+      <br />
       <div>
         <Margins />
       </div>
+      <br />
       <div>
         <Corners />
       </div>
+      <br />
       <div>
         <Dimensions />
       </div>
+      <br />
       <div>
         <Positions />
       </div>
+      <br />
       <div>
         <Zindex />
       </div>
       <div>
         <Float />
       </div>
+      <br />
       <div>
         <GridLayout />
       </div>
+      <br />
       <div>
         <Flex />
       </div>
+      <br />
       <div>
         <ReactIcons />
       </div>
@@ -123,9 +133,11 @@ export default function Lab2() {
       <div>
         <BootstrapTables />
       </div>
+      <br />
       <div>
         <BootstrapLists />
       </div>
+      <br />
       <div>
         <BootstrapForms />
       </div>
