@@ -46,7 +46,7 @@ export default function ModulesControls() {
         <FaPlus className="position-relative me-2" style={{ bottom: "1px" }} />
         Module
       </Button>
-      <Dropdown onSelect={handleSelect} className="float-end me-2">
+      <Dropdown onSelect={handleSelect} className="float-end me-1">
         <Dropdown.Toggle variant="secondary" size="sm">
           {selectedOption.icon}
           {selectedOption.label}
@@ -74,6 +74,12 @@ export default function ModulesControls() {
           </Dropdown.Item>
         </Dropdown.Menu>
       </Dropdown>
+      <Button variant="secondary" size="sm" className="float-end me-1">
+        View Progress
+      </Button>
+      <Button variant="secondary" size="sm" className="float-end me-1">
+        Collapse All
+      </Button>
     </div>
   );
 }
