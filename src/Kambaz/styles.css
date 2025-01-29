@@ -33,3 +33,9 @@
         padding-left: 120px !important;
     }
 }
+
+/* Card Rules */
+.wd-dashboard-course .card-body button {
+    align-self: flex-start;
+    width: auto;
+}
