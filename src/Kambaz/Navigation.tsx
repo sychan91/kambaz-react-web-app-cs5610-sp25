@@ -10,7 +10,7 @@ import { MdAccountCircle } from "react-icons/md";
 export default function KambazNavigation() {
   return (
     <ListGroup
-      style={{ width: 90 }}
+      style={{ width: 75 }}
       id="wd-kambaz-navigation"
       className="rounded-0 position-fixed bottom-0 top-0 d-none d-md-block bg-black z-2"
     >

@@ -3,7 +3,7 @@
     font-size: 12px;
 }
 
-/* Icon Size & Color Rules */
+/* Icon Size, Pos, & Color Rules */
 .wd-icon-red {
     color: red;
 }
@@ -25,4 +25,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+/* Media Queries to apply offset to Kambaz Nav Bar */
+@media (min-width: 768px) {
+    #wd-kambaz .wd-main-content-offset {
+        padding-left: 120px !important;
+    }
 }
