@@ -4,6 +4,8 @@ import { BsGripVertical } from "react-icons/bs";
 import { LuNotebookPen } from "react-icons/lu";
 import LessonControlButtons from "../Modules/LessonControlButtons";
 import { Link } from "react-router-dom";
+import { IoEllipsisVertical } from "react-icons/io5";
+import { TfiPlus } from "react-icons/tfi";
 
 export default function Assignments() {
   return (
@@ -13,7 +15,22 @@ export default function Assignments() {
       </div>
       <ListGroup className="rounded-0 wd-assignment-padding wd-module-padding">
         <ListGroup.Item className="wd-module p-0 mb-5 wd-f-small fw-semibold border-gray">
-          <div className="wd-title p-3 ps-2 bg-secondary">ASSIGNMENTS</div>
+          <div className="d-flex justify-content-between align-items-center p-3 ps-2 bg-secondary">
+            <span className="fw-bold">ASSIGNMENTS</span>
+            <div className="d-flex align-items-center">
+              <div
+                className="rounded-pill px-3 py-1 bg-secondary border wd-thin-black-border me-3"
+                style={{
+                  fontSize: "0.8rem",
+                  fontWeight: "480",
+                }}
+              >
+                40% of Total
+              </div>
+              <TfiPlus className="fs-6 me-2" />
+              <IoEllipsisVertical className="fs-6" />
+            </div>
+          </div>
           <ListGroup className="wd-assignments rounded-0">
             <ListGroup.Item className="wd-assignment p-3 d-flex align-items-center">
               <div className="d-flex align-items-center me-3">

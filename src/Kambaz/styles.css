@@ -127,3 +127,8 @@
 .wd-assignment-f-small {
     font-size: 12px;
 }
+
+.wd-thin-black-border {
+    border-color: black !important;
+    border-width: 1px !important;
+}
