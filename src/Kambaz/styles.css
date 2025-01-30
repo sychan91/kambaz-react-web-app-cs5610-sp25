@@ -73,6 +73,10 @@
     padding-right: 40px;
 }
 
+.wd-padding-right {
+    padding-right: 30px;
+}
+
 .btn-secondary {
     --bs-btn-color: #000 !important;
     --bs-btn-bg: #c7cdd1 !important;
