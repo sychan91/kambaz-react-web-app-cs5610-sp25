@@ -1,13 +1,32 @@
-import { Link } from "react-router-dom";
+import { Button, FormControl } from "react-bootstrap";
+import { Form, Link } from "react-router-dom";
 
 export default function Signin() {
-    return (
-        <div id="wd-signin-screen">
-            <h3>Sign in</h3>
-            <input placeholder="username" className="wd-username" /> <br/>
-            <input placeholder="password" type="password" className="wd-password" /> <br/>
-            <Link to="/Kambaz/Dashboard" id="wd-signin-btn">Sign in</Link> <br/>
-            <Link to="/Kambaz/Account/Signup" id="wd-signup-link">Sign up</Link>
-        </div>
-    );
+  return (
+    <div id="wd-signin-screen" style={{ width: "250px" }}>
+      <h3>Sign in</h3>
+      <FormControl id="wd-username" placeholder="username" className="mb-2" />
+      <FormControl
+        id="wd-password"
+        placeholder="password"
+        type="password"
+        className="mb-2"
+      />
+      <Button
+        variant="primary"
+        size="sm"
+        className="w-100 mb-2"
+        href="#/Kambaz/Dashboard"
+      >
+        Sign in
+      </Button>
+      <Link to="/Kambaz/Account/Signup" id="wd-signup-link">
+        Sign up
+      </Link>
+    </div>
+  );
 }
+
+<Link to="/Kambaz/Account/Signup" id="wd-signup-link">
+  Sign up
+</Link>;

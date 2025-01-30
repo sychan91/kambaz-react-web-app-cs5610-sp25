@@ -5,24 +5,19 @@ import Profile from "./Profile";
 import AccountNavigation from "./Navigation";
 
 export default function Account() {
-    return (
-        <div id="wd-account-screen">
-            <h2>Account</h2>
-            <table width="100%">
-                <tr>
-                    <td valign="top">
-                        <AccountNavigation/>
-                    </td>
-                    <td>
-                        <Routes>
-                            <Route path="/" element={<Navigate to="/Kambaz/Account/Signin" />} />
-                            <Route path="Signin" element={<Signin />} />
-                            <Route path="Signup" element={<Signup />} />
-                            <Route path="Profile" element={<Profile />} />
-                        </Routes>
-                    </td>
-                </tr>
-            </table>
-        </div>
-    );
+  return (
+    <div id="wd-account-screen" className="d-flex">
+      <div className="wd-account-nav wd-padding-right wd-top-padding-20">
+        <AccountNavigation />
+      </div>
+      <div className="wd-account-content flex-grow-1 wd-top-padding-20">
+        <Routes>
+          <Route path="/" element={<Navigate to="/Kambaz/Account/Signin" />} />
+          <Route path="Signin" element={<Signin />} />
+          <Route path="Signup" element={<Signup />} />
+          <Route path="Profile" element={<Profile />} />
+        </Routes>
+      </div>
+    </div>
+  );
 }

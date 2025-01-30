@@ -7,6 +7,10 @@
     font-size: 14px;
 }
 
+.wd-f-med {
+    font-size: 15px;
+}
+
 /* Icon Size, Pos, & Color Rules */
 .wd-icon-red {
     color: red;
@@ -57,10 +61,21 @@
     padding: 5px;
 }
 
+/* Spacing between account nav items */
+#wd-account-navigation .list-group-item {
+    margin-bottom: 0px;
+    padding: 5px;
+}
+
 /* Top Padding */
 .wd-top-padding {
     padding-top: 50px;
 }
+
+.wd-top-padding-20 {
+    padding-top: 20px;
+}
+
 
 /* Module padding */
 .wd-module-padding {
