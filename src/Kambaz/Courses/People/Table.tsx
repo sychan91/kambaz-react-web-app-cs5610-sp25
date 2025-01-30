@@ -19,8 +19,10 @@ export default function PeopleTable() {
           <tr>
             <td className="wd-full-name text-nowrap">
               <FaUserCircle className="me-2 fs-2 text-secondary" />
-              <span className="wd-first-name wd-f-small">Tony</span>{" "}
-              <span className="wd-last-name wd-f-small">Stark</span>
+              <span className="wd-first-name text-danger wd-f-small">
+                Tony
+              </span>{" "}
+              <span className="wd-last-name text-danger wd-f-small">Stark</span>
             </td>
             <td className="wd-login-id wd-f-small">001234561S</td>
             <td className="wd-section wd-f-small">S101</td>
@@ -31,8 +33,10 @@ export default function PeopleTable() {
           <tr>
             <td className="wd-full-name text-nowrap">
               <FaUserCircle className="me-2 fs-2 text-secondary" />
-              <span className="wd-first-name wd-f-small">Bruce</span>{" "}
-              <span className="wd-last-name wd-f-small">Wayne</span>
+              <span className="wd-first-name text-danger wd-f-small">
+                Bruce
+              </span>{" "}
+              <span className="wd-last-name text-danger wd-f-small">Wayne</span>
             </td>
             <td className="wd-login-id wd-f-small">001234562S</td>
             <td className="wd-section wd-f-small">S101</td>
@@ -43,8 +47,12 @@ export default function PeopleTable() {
           <tr>
             <td className="wd-full-name text-nowrap">
               <FaUserCircle className="me-2 fs-2 text-secondary" />
-              <span className="wd-first-name wd-f-small">Steve</span>{" "}
-              <span className="wd-last-name wd-f-small">Rogers</span>
+              <span className="wd-first-name text-danger wd-f-small">
+                Steve
+              </span>{" "}
+              <span className="wd-last-name text-danger wd-f-small">
+                Rogers
+              </span>
             </td>
             <td className="wd-login-id wd-f-small">001234563S</td>
             <td className="wd-section wd-f-small">S101</td>
@@ -55,8 +63,12 @@ export default function PeopleTable() {
           <tr>
             <td className="wd-full-name text-nowrap">
               <FaUserCircle className="me-2 fs-2 text-secondary" />
-              <span className="wd-first-name wd-f-small">Natasha</span>{" "}
-              <span className="wd-last-name wd-f-small">Romanoff</span>
+              <span className="wd-first-name text-danger wd-f-small">
+                Natasha
+              </span>{" "}
+              <span className="wd-last-name text-danger wd-f-small">
+                Romanoff
+              </span>
             </td>
             <td className="wd-login-id wd-f-small">001234564S</td>
             <td className="wd-section wd-f-small">S101</td>
@@ -67,8 +79,12 @@ export default function PeopleTable() {
           <tr>
             <td className="wd-full-name text-nowrap">
               <FaUserCircle className="me-2 fs-2 text-secondary" />
-              <span className="wd-first-name wd-f-small">Thor</span>{" "}
-              <span className="wd-last-name wd-f-small">Odinson</span>
+              <span className="wd-first-name text-danger wd-f-small">
+                Thor
+              </span>{" "}
+              <span className="wd-last-name text-danger wd-f-small">
+                Odinson
+              </span>
             </td>
             <td className="wd-login-id wd-f-small">001234565S</td>
             <td className="wd-section wd-f-small">S101</td>
@@ -79,8 +95,12 @@ export default function PeopleTable() {
           <tr>
             <td className="wd-full-name text-nowrap">
               <FaUserCircle className="me-2 fs-2 text-secondary" />
-              <span className="wd-first-name wd-f-small">Bruce</span>{" "}
-              <span className="wd-last-name wd-f-small">Banner</span>
+              <span className="wd-first-name text-danger wd-f-small">
+                Bruce
+              </span>{" "}
+              <span className="wd-last-name text-danger wd-f-small">
+                Banner
+              </span>
             </td>
             <td className="wd-login-id wd-f-small">001234566S</td>
             <td className="wd-section wd-f-small">S101</td>
