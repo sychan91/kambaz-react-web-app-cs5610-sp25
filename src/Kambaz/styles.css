@@ -118,3 +118,12 @@
 .wd-acc-margin-spacing {
     margin-bottom: 10px;
 }
+
+/* Assignment Screen Rules */
+.wd-assignment-padding {
+    padding-top: 30px;
+}
+
+.wd-assignment-f-small {
+    font-size: 12px;
+}
