@@ -42,11 +42,20 @@ export default function ModulesControls() {
 
   return (
     <div id="wd-modules-controls" className="text-nowrap">
-      <Button variant="danger" size="sm" className="me-1 float-end">
+      <Button
+        id="wd-module-btn"
+        variant="danger"
+        size="sm"
+        className="me-1 float-end"
+      >
         <FaPlus className="position-relative me-2" style={{ bottom: "1px" }} />
         Module
       </Button>
-      <Dropdown onSelect={handleSelect} className="float-end me-1">
+      <Dropdown
+        id="wd-module-dropdown"
+        onSelect={handleSelect}
+        className="float-end me-1"
+      >
         <Dropdown.Toggle variant="secondary" size="sm">
           {selectedOption.icon}
           {selectedOption.label}
@@ -74,10 +83,20 @@ export default function ModulesControls() {
           </Dropdown.Item>
         </Dropdown.Menu>
       </Dropdown>
-      <Button variant="secondary" size="sm" className="float-end me-1">
+      <Button
+        id="wd-view-progress"
+        variant="secondary"
+        size="sm"
+        className="float-end me-1"
+      >
         View Progress
       </Button>
-      <Button variant="secondary" size="sm" className="float-end me-1">
+      <Button
+        id="wd-collapse-all"
+        variant="secondary"
+        size="sm"
+        className="float-end me-1"
+      >
         Collapse All
       </Button>
     </div>

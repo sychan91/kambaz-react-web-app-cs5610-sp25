@@ -56,3 +56,36 @@
     margin-bottom: 0px;
     padding: 5px;
 }
+
+/* Top Padding */
+.wd-top-padding {
+    padding-top: 50px;
+}
+
+/* Module padding */
+.wd-module-padding {
+    width: 100%;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+.wd-module-control-padding {
+    padding-right: 40px;
+}
+
+.btn-secondary {
+    --bs-btn-color: #000 !important;
+    --bs-btn-bg: #c7cdd1 !important;
+    --bs-btn-border-color: #c7cdd1
+    !important;
+    --bs-btn-hover-color: #fff !important;
+    }
+    .bg-secondary {
+    --bs-secondary-rgb: 199, 205, 209;
+    }
+    .list-group-item {
+    --bs-list-group-border-color: gray;
+    }
+    .wd-lesson {
+        border-left: 3px solid green !important;
+    }
