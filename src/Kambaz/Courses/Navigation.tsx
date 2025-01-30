@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export default function CoursesNavigation() {
   return (
-    <ListGroup id="wd-courses-navigation" className="wd rounded-0 wd-small">
+    <ListGroup id="wd-courses-navigation" className="wd rounded-0 wd-f-small">
       <ListGroup.Item
         className="active border-0"
         as={Link}

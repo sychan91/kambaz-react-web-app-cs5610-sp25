@@ -1,5 +1,7 @@
 import { ListGroup } from "react-bootstrap";
 import ModulesControls from "./ModulesControls";
+import { BsGripVertical } from "react-icons/bs";
+import LessonControlButtons from "./LessonControlButtons";
 
 export default function Modules() {
   return (
@@ -10,29 +12,37 @@ export default function Modules() {
       <ListGroup className="rounded-0 wd-top-padding wd-module-padding">
         <ListGroup.Item
           className="wd-module
-                    p-0 mb-5 fs-5 border-gray"
+                    p-0 mb-5 wd-f-small fw-semibold border-gray"
         >
           <div className="wd-title p-3 ps-2 bg-secondary">Week 1</div>
           <ListGroup className="wd-lessons rounded-0">
             <ListGroup.Item className="wd-lesson p-3 ps-1">
+              <BsGripVertical className="me-2 fs-5" />
               LESSON 1
+              <LessonControlButtons />
             </ListGroup.Item>
             <ListGroup.Item className="wd-lesson p-3 ps-1">
+              <BsGripVertical className="me-2 fs-5" />
               LESSON 2
+              <LessonControlButtons />
             </ListGroup.Item>
           </ListGroup>
         </ListGroup.Item>
         <ListGroup.Item
           className="wd-module
-                               p-0 mb-5 fs-5 border-gray"
+                               p-0 mb-5 wd-f-small fw-semibold border-gray"
         >
           <div className="wd-title p-3 ps-2 bg-secondary">Week 2</div>
           <ListGroup className="wd-lessons rounded-0">
             <ListGroup.Item className="wd-lesson p-3 ps-1">
-              LESSON 1{" "}
+              <BsGripVertical className="me-2 fs-5" />
+              LESSON 1
+              <LessonControlButtons />
             </ListGroup.Item>
             <ListGroup.Item className="wd-lesson p-3 ps-1">
-              LESSON 2{" "}
+              <BsGripVertical className="me-2 fs-5" />
+              LESSON 2
+              <LessonControlButtons />
             </ListGroup.Item>
           </ListGroup>
         </ListGroup.Item>
