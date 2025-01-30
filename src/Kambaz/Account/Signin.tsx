@@ -3,7 +3,7 @@ import { Form, Link } from "react-router-dom";
 
 export default function Signin() {
   return (
-    <div id="wd-signin-screen" style={{ width: "250px" }}>
+    <div id="wd-signin-screen" className="wd-account-component-width">
       <h3>Sign in</h3>
       <FormControl id="wd-username" placeholder="username" className="mb-2" />
       <FormControl

@@ -108,3 +108,13 @@
     .wd-lesson {
         border-left: 3px solid green !important;
     }
+
+/* Account componenet width */
+.wd-account-component-width {
+    width: 250px;
+}
+
+/*Account bottom padding */
+.wd-acc-margin-spacing {
+    margin-bottom: 10px;
+}
