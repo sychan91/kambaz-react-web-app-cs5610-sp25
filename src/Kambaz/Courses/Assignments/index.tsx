@@ -48,8 +48,8 @@ export default function Assignments() {
                   </Link>
                   <br />
                   <span className="wd-assignment-f-small">
-                    Multiple Modules | <b>Not available until</b> May 6 at
-                    12:00am
+                    <span className="text-danger">Multiple Modules</span> |{" "}
+                    <b>Not available until</b> May 6 at 12:00am
                   </span>
                   <br />
                   <span className="wd-assignment-f-small">
@@ -78,8 +78,8 @@ export default function Assignments() {
                   </Link>
                   <br />
                   <span className="wd-assignment-f-small">
-                    Multiple Modules | <b>Not available unit</b> May 13 at
-                    12:00am
+                    <span className="text-danger">Multiple Modules</span> |{" "}
+                    <b>Not available unit</b> May 13 at 12:00am
                   </span>
                   <br />
                   <span className="wd-assignment-f-small">
@@ -108,8 +108,8 @@ export default function Assignments() {
                   </Link>
                   <br />
                   <span className="wd-assignment-f-small">
-                    Multiple Modules | <b>Not available unit</b> May 20 at
-                    12:00am
+                    <span className="text-danger">Multiple Modules</span> |{" "}
+                    <b>Not available unit</b> May 20 at 12:00am
                   </span>
                   <br />
                   <span className="wd-assignment-f-small">

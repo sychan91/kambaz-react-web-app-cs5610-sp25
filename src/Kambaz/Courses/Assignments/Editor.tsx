@@ -1,119 +1,141 @@
+import { Col, Form, Row } from "react-bootstrap";
+
 export default function AssignmentEditor() {
-    return (
-        <div id='wd-assignment-editor'>
-            <label htmlFor='wd-name'><b>Assignment Name</b></label><br/>
-            <input id='wd-name' value='A1 - ENV + HTML'/><br/><br/>
-            <textarea id='wd-description' style={{ width: '100%' }} rows={10} cols={30}>
-                The assignment is available online. Submit a link to the landing page of your Web
-                application running on Netlify. The landing page should include the following:
-                Your full name and section Links to each of the lab assignments Link to the Kambaz
-                application Links to all relevant source code repositories The Kambaz application
-                should include a link to navigate back to the landing page.
-            </textarea>
-           <br/>
-           <table>
-            <tr>
-                <td align='right' valign='top'>
-                    <label htmlFor='wd-points'>Points </label>
-                </td>
-                <td>
-                    <input type='wd-points' value={100}/>
-                </td>
-            </tr>
-            <br/>
-            <tr>
-                <td align='right' valign='top'>
-                    <label htmlFor='wd-group'>Assignment Group </label>
-                </td>
-                <td>
-                    <select name='wd-group'>
-                        <option value='ASSIGNMENTS'>ASSIGNMENTS</option>
-                    </select>
-                </td>
-            </tr>
-            <br/>
-            <tr>
-                <td align='right' valign='top'>
-                    <label htmlFor='wd-display-grade-as'>Display Grade as </label>
-                </td>
-                <td>
-                    <select name='wd-display-grade-as'>
-                        <option value='PERCENTAGE'>Percentage</option>
-                        <option value='RAWSCORE'>Raw Score</option>
-                    </select>
-                </td>
-            </tr>
-            <br/>
-            <tr>
-                <td align='right' valign='top'>
-                    <label htmlFor='wd-submission-type'>Submission Type</label>
-                </td>
-                <td>
-                    <select name='wd-submission-type'>
-                        <option value='Online'>Online</option>
-                    </select>
-                </td>
-            </tr>
-            <br/>
-            <tr>
-            <br/>
-                <td text-align='center' valign='middle'>
-                    <label htmlFor='wd-entry-options'>Online Entry Options</label>
-                    <br/>
-                    <input type='checkbox' name='check-option' id='wd-text-entry'/>
-                    <label htmlFor='wd-text-entry'>Text Entry</label><br/>
-                    <input type='checkbox' name='check-option' id='wd-website-url'/>
-                    <label htmlFor='wd-website-url'>Website URL</label><br/>
-                    <input type='checkbox' name='check-option' id='wd-media-recordings'/>
-                    <label htmlFor='wd-media-recordings'>Media Recordings</label><br/>
-                    <input type='checkbox' name='check-option' id='wd-student-annotation'/>
-                    <label htmlFor='wd-student-annotation'>Student Annotation</label><br/>
-                    <input type='checkbox' name='check-option' id='wd-file-upload'/>
-                    <label htmlFor='wd-file-upload'>File Uploads</label><br/>
-                </td>
-            </tr>
-            <br/>
-            <tr>
-                <br/>
-                <td align='left'>
-                    <label htmlFor='wd-assign-to'>Assign to</label>
-                </td>
-            </tr>
-            <tr>
-                <br/>
-                <td align='left' valign='top'>
-                    <input type='wd-assign-to' placeholder='Everyone'/>
-                </td>
-            </tr>
-            <br/>
-            <tr>
-                <br/>
-                <td align='left' valign='top'>
-                    <label htmlFor='wd-due-date'>Due</label>
-                    <br/>
-                    <input type='date' value='01-22-2025' id='wd-due-date'/>
-                </td>
-            </tr>
-            <br/>
-            <tr>
-                <br/>
-                <td align='left' valign='top'>
-                    <label htmlFor='wd-available-from'>Available from</label>
-                    <br/>
-                    <input type='date' value='01-06-2025' id='wd-available-from'/>
-                </td>
-                <td>
-                    <label htmlFor='wd-available-until'>Until</label>
-                    <br/>
-                    <input type='date' value='01-22-2025' id='wd-available-until'/>
-                </td>
-            </tr>
-           </table>
-           <hr/>
-           <div style={{textAlign: 'right'}}>
-                <button id='wd-cancel-btn' style={{marginRight: '3px'}}>Cancel</button>
-                <button id='wd-save-btn' style={{backgroundColor: 'red', color: 'white'}}>Save</button>
-            </div>
-        </div>
-    );
+  return (
+    <div id="wd-assignment-editor" style={{ width: "600px" }}>
+      <Form>
+        <Form.Group className="mb-3">
+          <Form.Label>Assignment Name</Form.Label>
+          <Form.Control type="text" placeholder="A1 - ENV + HTML" />
+        </Form.Group>
+        <Form.Group className="mb-3">
+          <Form.Control
+            as="textarea"
+            rows={20}
+            placeholder={`The assignment is available online\n\nSubmit a link to the landing page of your Web application running on Netlify.\n\nThe landing page should include the following\n\n- Your full name and section\n- Links to each of the lab assignments\n- Link to the Kanbs application\n- Links to all relevant source code repositories\n\nThe Kanbas application should include a link to navigate back to the landing page.`}
+          />
+        </Form.Group>
+        <Form.Group
+          className="mb-3 d-flex align-items-center"
+          style={{ width: "100%" }}
+        >
+          <Form.Label
+            className="pe-2"
+            style={{ width: "300px", textAlign: "right" }}
+          >
+            Points
+          </Form.Label>
+          <Form.Control type="number" placeholder="100" />
+        </Form.Group>
+        <Form.Group
+          className="mb-3 d-flex align-items-center"
+          style={{ width: "100%" }}
+        >
+          <Form.Label
+            className="pe-2 text-nowrap"
+            style={{ width: "300px", textAlign: "right" }}
+          >
+            Assignment Group
+          </Form.Label>
+          <Form.Select>
+            <option selected>ASSIGNMENT</option>
+            <option>PROJECT</option>
+          </Form.Select>
+        </Form.Group>
+        <Form.Group
+          className="mb-3 d-flex align-items-center"
+          style={{ width: "100%" }}
+        >
+          <Form.Label
+            className="pe-2 text-nowrap"
+            style={{ width: "300px", textAlign: "right" }}
+          >
+            Display Grade as
+          </Form.Label>
+          <Form.Select>
+            <option selected>Percentage</option>
+            <option>Raw Score</option>
+          </Form.Select>
+        </Form.Group>
+        <Form.Group
+          className="d-flex align-items-start"
+          style={{ width: "100%" }}
+        >
+          <Form.Label
+            className="pe-2 text-nowrap"
+            style={{ width: "300px", textAlign: "right" }}
+          >
+            Submission Type
+          </Form.Label>
+          <div
+            id="submission-type-container"
+            style={{
+              width: "600px",
+              padding: "10px",
+              border: "1px solid #ddd",
+              borderRadius: "8px",
+              boxSizing: "border-box",
+              marginTop: "0",
+              marginBottom: "20px",
+            }}
+          >
+            <Form.Select className="mb-4">
+              <option>Online</option>
+            </Form.Select>
+            <Form.Label className="fw-bold">Online Entry Options</Form.Label>
+            <Form.Check type="checkbox" label="Text Entry" />
+            <Form.Check type="checkbox" label="Website URL" />
+            <Form.Check type="checkbox" label="Media Recordings" />
+            <Form.Check type="checkbox" label="Student Annotation" />
+            <Form.Check type="checkbox" label="File Uploads" />
+          </div>
+        </Form.Group>
+        <Form.Group
+          className="d-flex align-items-start"
+          style={{ width: "100%" }}
+        >
+          <Form.Label
+            className="pe-2 text-nowrap"
+            style={{ width: "300px", textAlign: "right" }}
+          >
+            Assign
+          </Form.Label>
+          <div
+            id="submission-type-container"
+            style={{
+              width: "600px",
+              padding: "10px",
+              border: "1px solid #ddd",
+              borderRadius: "8px",
+              boxSizing: "border-box",
+              marginTop: "0",
+              marginBottom: "20px",
+            }}
+          >
+            <Form.Label className="fw-bold">Assign to</Form.Label>
+            <Form.Select className="mb-3">
+              <option>Everyone</option>
+            </Form.Select>
+            <Form.Label className="fw-bold">Due</Form.Label>
+            <Form.Control className="mb-2" type="date" />
+            <Form.Group as={Row} className="mb-3 g-1">
+              <Col>
+                <Form.Label className="mb-0 wd-f-small fw-bold">
+                  Available
+                </Form.Label>
+                <Form.Control type="date" />
+              </Col>
+              <Col>
+                <Form.Label className="mb-0 wd-f-small fw-bold">
+                  Until
+                </Form.Label>
+                <Form.Control type="date" />
+              </Col>
+            </Form.Group>
+          </div>
+        </Form.Group>
+        <hr />
+      </Form>
+    </div>
+  );
 }
