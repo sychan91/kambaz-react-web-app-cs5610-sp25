@@ -136,10 +136,10 @@ export default function AssignmentEditor() {
         </Form.Group>
         <hr />
         <div id="wd-assignment-editor-btns" className="text-nowrap">
-          <Button variant="danger" size="sm" className="me-1 float-end">
+          <Button variant="danger" size="sm" className="me-1 mb-4 float-end">
             Save
           </Button>
-          <Button variant="secondary" size="sm" className="me-1 float-end">
+          <Button variant="secondary" size="sm" className="me-1 mb-4 float-end">
             Cancel
           </Button>
         </div>
