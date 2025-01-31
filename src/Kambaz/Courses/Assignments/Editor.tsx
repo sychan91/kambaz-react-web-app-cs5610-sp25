@@ -1,4 +1,4 @@
-import { Col, Form, Row } from "react-bootstrap";
+import { Button, Col, Form, Row } from "react-bootstrap";
 
 export default function AssignmentEditor() {
   return (
@@ -135,6 +135,14 @@ export default function AssignmentEditor() {
           </div>
         </Form.Group>
         <hr />
+        <div id="wd-assignment-editor-btns" className="text-nowrap">
+          <Button variant="danger" size="sm" className="me-1 float-end">
+            Save
+          </Button>
+          <Button variant="secondary" size="sm" className="me-1 float-end">
+            Cancel
+          </Button>
+        </div>
       </Form>
     </div>
   );
