@@ -1,20 +1,36 @@
-import { Button, Col, Form, Row } from "react-bootstrap";
+import { Button, Card, Col, Form, Row } from "react-bootstrap";
 
 export default function AssignmentEditor() {
   return (
-    <div id="wd-assignment-editor" style={{ width: "600px" }}>
+    <div id="wd-assignment-editor" className="ps-3" style={{ width: "600px" }}>
       <Form>
         <Form.Group className="mb-3">
           <Form.Label>Assignment Name</Form.Label>
           <Form.Control type="text" placeholder="A1 - ENV + HTML" />
         </Form.Group>
-        <Form.Group className="mb-3">
-          <Form.Control
-            as="textarea"
-            rows={20}
-            placeholder={`The assignment is available online\n\nSubmit a link to the landing page of your Web application running on Netlify.\n\nThe landing page should include the following\n\n- Your full name and section\n- Links to each of the lab assignments\n- Link to the Kanbs application\n- Links to all relevant source code repositories\n\nThe Kanbas application should include a link to navigate back to the landing page.`}
-          />
-        </Form.Group>
+        <Card>
+          <Card.Body className="mb-2" contentEditable={true}>
+            The assignment is{" "}
+            <span className="text-danger">available online</span>
+            <br />
+            Submit a link to the landing page of your web application running on
+            netlify.
+            <br />
+            The landing page should include the following:
+            <br />
+            <br />
+            <ul>
+              <li>Your full name and section</li>
+              <li>Links to each of the lab assignments</li>
+              <li>Link to the Kanbas application</li>
+              <li>Link to all relevant source code repositories</li>
+            </ul>
+            <br />
+            The Kanbas application should include a link to navigate back to the
+            landing page.
+          </Card.Body>
+        </Card>
+        <br />
         <Form.Group
           className="mb-3 d-flex align-items-center"
           style={{ width: "100%" }}

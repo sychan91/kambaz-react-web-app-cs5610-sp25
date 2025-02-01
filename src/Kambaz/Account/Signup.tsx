@@ -1,5 +1,5 @@
 // import React from "react";
-import { FormControl } from "react-bootstrap";
+import { Button, FormControl } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 export default function Signup() {
@@ -19,9 +19,14 @@ export default function Signup() {
         placeholder="verify password"
         className="mb-2"
       />
-
-      <Link to="/Kambaz/Account/Profile">Sign up</Link>
-      <br />
+      <Button
+        variant="primary"
+        size="sm"
+        className="w-100 mb-2"
+        href="/Kambaz/Account/Profile"
+      >
+        Sign in
+      </Button>
       <Link to="/Kambaz/Account/Signin">Sign out</Link>
     </div>
   );

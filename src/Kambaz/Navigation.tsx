@@ -42,6 +42,7 @@ export default function KambazNavigation() {
         className="border-0 bg-white text-danger text-center wd-f-very-small"
       >
         <IoSpeedometerOutline className="wd-icon-red wd-icon-md" />
+        <br />
         Dashboard
       </ListGroup.Item>
 

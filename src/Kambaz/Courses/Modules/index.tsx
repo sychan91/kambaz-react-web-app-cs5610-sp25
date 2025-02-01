@@ -2,6 +2,7 @@ import { ListGroup } from "react-bootstrap";
 import ModulesControls from "./ModulesControls";
 import { BsGripVertical } from "react-icons/bs";
 import LessonControlButtons from "./LessonControlButtons";
+import ModuleControlBtns from "./ModuleControlBtns";
 
 export default function Modules() {
   return (
@@ -14,7 +15,11 @@ export default function Modules() {
           className="wd-module
                     p-0 mb-5 wd-f-small fw-semibold border-gray"
         >
-          <div className="wd-title p-3 ps-2 bg-secondary">Week 1</div>
+          <div className="wd-title p-3 ps-2 bg-secondary">
+            <BsGripVertical className="me-2 fs-5" />
+            Week 1
+            <ModuleControlBtns />
+          </div>
           <ListGroup className="wd-lessons rounded-0">
             <ListGroup.Item className="wd-lesson p-3 ps-1">
               <BsGripVertical className="me-2 fs-5" />
@@ -32,7 +37,10 @@ export default function Modules() {
           className="wd-module
                                p-0 mb-5 wd-f-small fw-semibold border-gray"
         >
-          <div className="wd-title p-3 ps-2 bg-secondary">Week 2</div>
+          <div className="wd-title p-3 ps-2 bg-secondary">
+            <BsGripVertical className="me-2 fs-5" />
+            Week 2
+          </div>
           <ListGroup className="wd-lessons rounded-0">
             <ListGroup.Item className="wd-lesson p-3 ps-1">
               <BsGripVertical className="me-2 fs-5" />

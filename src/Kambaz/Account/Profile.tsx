@@ -11,7 +11,7 @@ export default function Profile() {
       />
       <FormControl
         defaultValue="123"
-        type="password"
+        type="text"
         placeholder="password"
         className="wd-acc-margin-spacing"
       />
@@ -26,12 +26,12 @@ export default function Profile() {
         className="wd-acc-margin-spacing"
       />
       <FormControl
-        defaultValue="2000-01-01"
+        defaultValue="mm/dd/yyyy"
         type="date"
         className="wd-acc-margin-spacing"
       />
       <FormControl
-        defaultValue="alice@wonderland"
+        defaultValue="alice@wonderland.com"
         type="email"
         className="wd-acc-margin-spacing"
       />

@@ -24,6 +24,7 @@ export default function Dashboard() {
                   <Card.Title className="wd-dashboard-course-title">
                     CS1234 React JS
                   </Card.Title>
+                  <hr />
                   <Card.Text className="wd-dashboard-course-description">
                     Full Stack software developer
                   </Card.Text>
@@ -47,6 +48,7 @@ export default function Dashboard() {
                   <Card.Title className="wd-dashboard-course-title">
                     CS5001 Foundations of Computer Science
                   </Card.Title>
+                  <hr />
                   <Card.Text className="wd-dashboard-course-description">
                     Introduction to Computer Science
                   </Card.Text>
@@ -70,6 +72,7 @@ export default function Dashboard() {
                   <Card.Title className="wd-dashboard-course-title">
                     CS5002 Discrete Structures
                   </Card.Title>
+                  <hr />
                   <Card.Text className="wd-dashboard-course-description">
                     Learn about discrete structures
                   </Card.Text>
@@ -93,6 +96,7 @@ export default function Dashboard() {
                   <Card.Title className="wd-dashboard-course-title">
                     CS5004 Object-Oriented Programming
                   </Card.Title>
+                  <hr />
                   <Card.Text className="wd-dashboard-course-description">
                     Introduction to OOP and Java
                   </Card.Text>
@@ -116,6 +120,7 @@ export default function Dashboard() {
                   <Card.Title className="wd-dashboard-course-title">
                     CS5008 Data Structures & Algorithms
                   </Card.Title>
+                  <hr />
                   <Card.Text className="wd-dashboard-course-description">
                     Precursor to CS 5008 Algorithms
                   </Card.Text>
@@ -139,6 +144,7 @@ export default function Dashboard() {
                   <Card.Title className="wd-dashboard-course-title">
                     CS5200 Database Management Systems
                   </Card.Title>
+                  <hr />
                   <Card.Text className="wd-dashboard-course-description">
                     DBMS
                   </Card.Text>
@@ -162,6 +168,7 @@ export default function Dashboard() {
                   <Card.Title className="wd-dashboard-course-title">
                     CS5800 Advanced Algorithms
                   </Card.Title>
+                  <hr />
                   <Card.Text className="wd-dashboard-course-description">
                     Deep dive into algorithms
                   </Card.Text>
