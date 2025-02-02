@@ -5,6 +5,7 @@ import {
   CardImg,
   CardText,
   CardTitle,
+  Nav,
   Tab,
   Tabs,
 } from "react-bootstrap";
@@ -13,12 +14,24 @@ export default function BootstrapNavigation() {
   return (
     <div id="wd-css-navigating-with-tabs">
       <h2>Tabs</h2>
-      <Tabs defaultActiveKey="active" className="mb-3">
-        <Tab eventKey="active" title="Active"></Tab>
-        <Tab eventKey="link1" title="Link"></Tab>
-        <Tab eventKey="link2" title="Link"></Tab>
-        <Tab eventKey="link3" title="Disabled" disabled></Tab>
-      </Tabs>
+      <Nav variant="tabs">
+        <Nav.Item>
+          <Nav.Link href="#/Labs/Lab2/Active" active>
+            Active
+          </Nav.Link>
+        </Nav.Item>
+        <Nav.Item>
+          <Nav.Link href="#/Labs/Lab2/Link1">Link 1</Nav.Link>
+        </Nav.Item>
+        <Nav.Item>
+          <Nav.Link href="#/Labs/Lab2/Link2">Link 2</Nav.Link>
+        </Nav.Item>
+        <Nav.Item>
+          <Nav.Link href="#/Labs/Lab2/Disabled" disabled>
+            Disabled
+          </Nav.Link>
+        </Nav.Item>
+      </Nav>
       <div id="wd-css-navigating-with-cards" className="mb-3">
         <h2>Cards</h2>
         <Card style={{ width: "18rem" }}>
