@@ -6,8 +6,6 @@ import {
   CardText,
   CardTitle,
   Nav,
-  Tab,
-  Tabs,
 } from "react-bootstrap";
 
 export default function BootstrapNavigation() {
