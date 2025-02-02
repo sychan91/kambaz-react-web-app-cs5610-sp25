@@ -1,5 +1,4 @@
-import { Col, Nav, NavItem, NavLink, Row } from "react-bootstrap";
-import { Link, useLocation } from "react-router-dom";
+import { Nav } from "react-bootstrap";
 
 export default function TOC() {
   return (
