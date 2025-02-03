@@ -63,7 +63,7 @@ export default function CoursesNavigation() {
       <ListGroup.Item
         className="border-0 text-danger bg-color-white"
         as={Link}
-        to="/Kambaz/Courses/1234/People"
+        to="/Kambaz/Courses/:cid/People"
       >
         People
       </ListGroup.Item>

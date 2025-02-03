@@ -121,7 +121,10 @@
 
 /* Assignment Screen Rules */
 .wd-assignment-padding {
+    width: 100%;
     padding-top: 30px;
+    padding-left: 20px;
+    padding-right: 40px;
 }
 
 .wd-assignment-f-small {
@@ -131,6 +134,10 @@
 .wd-thin-black-border {
     border-color: black !important;
     border-width: 1px !important;
+}
+
+.wd-search-bar-padding {
+    padding-left: 20px;
 }
 
 /* Assignment Editor Rules */

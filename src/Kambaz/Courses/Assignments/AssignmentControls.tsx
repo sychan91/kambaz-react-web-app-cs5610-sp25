@@ -13,16 +13,20 @@ export default function AssignmentControls() {
         <TfiPlus className="position-relative me-2" style={{ bottom: "1px" }} />
         Group
       </Button>
-      <InputGroup
-        size="sm"
-        style={{ width: "300px" }}
-        className="float-end me-3"
-      >
-        <InputGroup.Text>
-          <HiMagnifyingGlass />
-        </InputGroup.Text>
-        <FormControl type="text" placeholder="Search..." />
-      </InputGroup>
+      <div className="d-flex justify-content-between aling-items-ceneter">
+        <div className="d-flex justify-content-start align-items-center">
+          <InputGroup
+            size="sm"
+            style={{ width: "300px" }}
+            className="wd-search-bar-padding me-5"
+          >
+            <InputGroup.Text>
+              <HiMagnifyingGlass />
+            </InputGroup.Text>
+            <FormControl type="text" placeholder="Search..." />
+          </InputGroup>
+        </div>
+      </div>
     </div>
   );
 }

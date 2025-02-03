@@ -13,7 +13,7 @@ export default function Assignments() {
       <div className="wd-module-control-padding">
         <AssignmentControls />
       </div>
-      <ListGroup className="rounded-0 wd-assignment-padding wd-module-padding">
+      <ListGroup className="rounded-0 wd-assignment-padding">
         <ListGroup.Item className="wd-module p-0 mb-5 wd-f-small fw-semibold border-gray">
           <div className="d-flex justify-content-between align-items-center p-3 ps-2 bg-secondary">
             <span className="fw-bold">ASSIGNMENTS</span>
@@ -32,7 +32,7 @@ export default function Assignments() {
             </div>
           </div>
           <ListGroup className="wd-assignments rounded-0">
-            <ListGroup.Item className="wd-assignment p-3 d-flex align-items-center">
+            <ListGroup.Item className="wd-assignment p-3 d-flex align-items-center wd-lesson">
               <div className="d-flex align-items-center me-3">
                 <BsGripVertical className="fs-5 me-2" />
                 <LuNotebookPen className="fs-6" />
@@ -62,7 +62,7 @@ export default function Assignments() {
                 <LessonControlButtons />
               </div>
             </ListGroup.Item>
-            <ListGroup.Item className="wd-assignment p-3 d-flex align-items-center">
+            <ListGroup.Item className="wd-assignment p-3 d-flex align-items-center wd-lesson">
               <div className="d-flex align-items-center me-3">
                 <BsGripVertical className="fs-5 me-2" />
                 <LuNotebookPen className="fs-6" />
@@ -92,7 +92,7 @@ export default function Assignments() {
                 <LessonControlButtons />
               </div>
             </ListGroup.Item>
-            <ListGroup.Item className="wd-assignment p-3 d-flex align-items-center">
+            <ListGroup.Item className="wd-assignment p-3 d-flex align-items-center wd-lesson">
               <div className="d-flex align-items-center me-3">
                 <BsGripVertical className="fs-5 me-2" />
                 <LuNotebookPen className="fs-6" />
