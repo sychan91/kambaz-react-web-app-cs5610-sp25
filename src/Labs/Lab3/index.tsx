@@ -19,6 +19,9 @@ import FindIndex from "./FindIndex";
 import FilterFunction from "./FilterFunction";
 import JsonStringify from "./JsonStringify";
 import House from "./House";
+import TodoItem from "./todo/TodoItem";
+import TodoList from "./todo/TodoList";
+import Spreading from "./Spreading";
 
 export default function Lab3() {
   return (
@@ -45,6 +48,10 @@ export default function Lab3() {
       <FilterFunction />
       <JsonStringify />
       <House />
+      <TodoItem />
+      <br />
+      <TodoList />
+      <Spreading />
     </div>
   );
 }
