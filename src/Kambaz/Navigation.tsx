@@ -8,42 +8,37 @@ import { IoSpeedometerOutline } from "react-icons/io5";
 import { MdAccountCircle } from "react-icons/md";
 
 export default function KambazNavigation() {
-  const { pathname, state } = useLocation();
+  const { pathname } = useLocation();
   const links = [
     {
       label: "Dashboard",
       path: "/Kambaz/Dashboard",
       icon: IoSpeedometerOutline,
       id: "wd-dashboard-link",
-      type: "dashboard",
     },
     {
       label: "Courses",
-      path: "/Kambaz/Dashboard",
+      path: "/Kambaz/Courses",
       icon: LuBookText,
       id: "wd-courses-link",
-      type: "courses",
     },
     {
       label: "Calendar",
       path: "/Kambaz/Calendar",
       icon: FaRegCalendarAlt,
       id: "wd-calendar-link",
-      type: "calendar",
     },
     {
       label: "Inbox",
       path: "/Kambaz/Inbox",
       icon: BsEnvelopePaper,
       id: "wd-inbox-link",
-      type: "inbox",
     },
     {
       label: "Labs",
       path: "/Labs",
       icon: GoBeaker,
       id: "wd-labs-link",
-      type: "labs",
     },
   ];
   return (

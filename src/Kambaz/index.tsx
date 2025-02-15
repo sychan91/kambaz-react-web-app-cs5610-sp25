@@ -14,6 +14,7 @@ export default function Kambaz() {
           <Route path="/" element={<Navigate to="Account" />} />
           <Route path="Account/*" element={<Account />} />
           <Route path="Dashboard" element={<Dashboard />} />
+          <Route path="Courses" element={<Dashboard />} />
           <Route path="Courses/:cid/*" element={<Courses />} />
           <Route path="Calendar" element={<h3>Calendar</h3>} />
           <Route path="Inbox" element={<h3>Inbox</h3>} />
