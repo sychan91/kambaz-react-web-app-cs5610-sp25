@@ -1,5 +1,5 @@
 import { ListGroup } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { GoBeaker } from "react-icons/go";
 import { BsEnvelopePaper } from "react-icons/bs";
 import { FaRegCalendarAlt } from "react-icons/fa";
@@ -8,6 +8,44 @@ import { IoSpeedometerOutline } from "react-icons/io5";
 import { MdAccountCircle } from "react-icons/md";
 
 export default function KambazNavigation() {
+  const { pathname, state } = useLocation();
+  const links = [
+    {
+      label: "Dashboard",
+      path: "/Kambaz/Dashboard",
+      icon: IoSpeedometerOutline,
+      id: "wd-dashboard-link",
+      type: "dashboard",
+    },
+    {
+      label: "Courses",
+      path: "/Kambaz/Dashboard",
+      icon: LuBookText,
+      id: "wd-courses-link",
+      type: "courses",
+    },
+    {
+      label: "Calendar",
+      path: "/Kambaz/Calendar",
+      icon: FaRegCalendarAlt,
+      id: "wd-calendar-link",
+      type: "calendar",
+    },
+    {
+      label: "Inbox",
+      path: "/Kambaz/Inbox",
+      icon: BsEnvelopePaper,
+      id: "wd-inbox-link",
+      type: "inbox",
+    },
+    {
+      label: "Labs",
+      path: "/Labs",
+      icon: GoBeaker,
+      id: "wd-labs-link",
+      type: "labs",
+    },
+  ];
   return (
     <ListGroup
       style={{ width: 75 }}
@@ -28,67 +66,32 @@ export default function KambazNavigation() {
         as={Link}
         to="/Kambaz/Account"
         id="wd-account-link"
-        className="border-0 bg-black text-white text-center wd-f-very-small"
+        className={`border-0 text-center wd-f-very-small ${
+          pathname.includes("Account")
+            ? "bg-white text-danger"
+            : "bg-black text-white"
+        }`}
       >
         <MdAccountCircle className="wd-icon-lg" />
         <br />
         Account
       </ListGroup.Item>
-
-      <ListGroup.Item
-        as={Link}
-        to="/Kambaz/Dashboard"
-        id="wd-dashboard-link"
-        className="border-0 bg-white text-danger text-center wd-f-very-small"
-      >
-        <IoSpeedometerOutline className="wd-icon-red wd-icon-md" />
-        <br />
-        Dashboard
-      </ListGroup.Item>
-
-      <ListGroup.Item
-        as={Link}
-        to="/Kambaz/Dashboard"
-        id="wd-course-link"
-        className="border-0 bg-black text-white text-center wd-f-very-small"
-      >
-        <LuBookText className="wd-icon-red wd-icon-md" />
-        <br />
-        Courses
-      </ListGroup.Item>
-
-      <ListGroup.Item
-        as={Link}
-        to="/Kambaz/Calendar"
-        id="wd-calendar-link"
-        className="border-0 bg-black text-white text-center wd-f-very-small"
-      >
-        <FaRegCalendarAlt className="wd-icon-red wd-icon-md" />
-        <br />
-        Calendar
-      </ListGroup.Item>
-
-      <ListGroup.Item
-        as={Link}
-        to="/Kambaz/Inbox"
-        id="wd-inbox-link"
-        className="border-0 bg-black text-white text-center wd-f-very-small"
-      >
-        <BsEnvelopePaper className="wd-icon-red wd-icon-md" />
-        <br />
-        Inbox
-      </ListGroup.Item>
-
-      <ListGroup.Item
-        as={Link}
-        to="/Labs"
-        id="wd-labs-link"
-        className="border-0 bg-black text-white text-center wd-f-very-small"
-      >
-        <GoBeaker className="wd-icon-red wd-icon-md" />
-        <br />
-        Labs
-      </ListGroup.Item>
+      {links.map((link) => (
+        <ListGroup.Item
+          as={Link}
+          to={link.path}
+          id={link.id}
+          className={`border-0 text-center wd-f-very-small ${
+            pathname.includes(link.label)
+              ? "bg-white text-danger"
+              : "bg-black text-white"
+          }`}
+        >
+          <link.icon className="wd-icon-red wd-icon-md" />
+          <br />
+          {link.label}
+        </ListGroup.Item>
+      ))}
     </ListGroup>
   );
 }
