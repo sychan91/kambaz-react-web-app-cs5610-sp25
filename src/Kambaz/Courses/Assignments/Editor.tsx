@@ -13,7 +13,11 @@ export default function AssignmentEditor() {
       <Form>
         <Form.Group className="mb-3">
           <Form.Label>Assignment Name</Form.Label>
-          <Form.Control type="text" placeholder="A1 - ENV + HTML" />
+          <Form.Control
+            type="text"
+            defaultValue={assignment?.title}
+            placeholder="A1 - ENV + HTML"
+          />
         </Form.Group>
         <Card>
           <Card.Body

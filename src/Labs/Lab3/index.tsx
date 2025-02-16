@@ -31,11 +31,12 @@ import Add from "./Add";
 import Square from "./Square";
 import Highlight from "./Highlight";
 import PathParameters from "./PathParameters";
+import { Container } from "react-bootstrap";
 
 export default function Lab3() {
   console.log("Hello World!");
   return (
-    <div id="wd-lab3">
+    <Container id="wd-lab3">
       <h2>Lab 3</h2>
       <VariablesAndConstants />
       <VariableTypes />
@@ -82,6 +83,6 @@ export default function Lab3() {
       <br />
       <PathParameters />
       <br />
-    </div>
+    </Container>
   );
 }
