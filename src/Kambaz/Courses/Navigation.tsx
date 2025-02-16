@@ -1,72 +1,29 @@
 import { ListGroup } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 export default function CoursesNavigation() {
+  const { cid } = useParams();
+  const links = [
+    "Home",
+    "Modules",
+    "Piazza",
+    "Zoom",
+    "Assignments",
+    "Quizzes",
+    "Grades",
+    "People",
+  ];
   return (
     <ListGroup id="wd-courses-navigation" className="wd rounded-0 wd-f-small">
-      <ListGroup.Item
-        className="active border-0"
-        as={Link}
-        to="/Kambaz/Courses/1234/Home"
-      >
-        Home
-      </ListGroup.Item>
-
-      <ListGroup.Item
-        className="border-0 text-danger bg-color-white"
-        as={Link}
-        to="/Kambaz/Courses/1234/Modules"
-      >
-        Modules
-      </ListGroup.Item>
-
-      <ListGroup.Item
-        className="border-0 text-danger bg-color-white"
-        as={Link}
-        to="/Kambaz/Courses/1234/Piazza"
-      >
-        Piazza
-      </ListGroup.Item>
-
-      <ListGroup.Item
-        className="border-0 text-danger bg-color-white"
-        as={Link}
-        to="/Kambaz/Courses/1234/Zoom"
-      >
-        Zoom
-      </ListGroup.Item>
-
-      <ListGroup.Item
-        className="border-0 text-danger bg-color-white"
-        as={Link}
-        to="/Kambaz/Courses/1234/Assignments"
-      >
-        Assignments
-      </ListGroup.Item>
-
-      <ListGroup.Item
-        className="border-0 text-danger bg-color-white"
-        as={Link}
-        to="/Kambaz/Courses/1234/Quizzes"
-      >
-        Quizzes
-      </ListGroup.Item>
-
-      <ListGroup.Item
-        className="border-0 text-danger bg-color-white"
-        as={Link}
-        to="/Kambaz/Courses/1234/Grades"
-      >
-        Grades
-      </ListGroup.Item>
-
-      <ListGroup.Item
-        className="border-0 text-danger bg-color-white"
-        as={Link}
-        to="/Kambaz/Courses/:cid/People"
-      >
-        People
-      </ListGroup.Item>
+      {links.map((link) => (
+        <ListGroup.Item
+          className="border-0 text-danger bg-color-white"
+          as={Link}
+          to={`/Kambaz/Courses/${cid}/${link}`}
+        >
+          {link}
+        </ListGroup.Item>
+      ))}
     </ListGroup>
   );
 }
