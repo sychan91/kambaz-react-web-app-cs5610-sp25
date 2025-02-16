@@ -1,6 +1,13 @@
 import { Button, Card, Col, Form, Row } from "react-bootstrap";
+import * as db from "../../Database";
+import { useParams, useNavigate } from "react-router-dom";
 
 export default function AssignmentEditor() {
+  const { cid, aid } = useParams();
+  const navigate = useNavigate();
+  const assignment = db.assignments.find(
+    (a) => a._id === aid && a.course === cid
+  );
   return (
     <div id="wd-assignment-editor" className="ps-3" style={{ width: "600px" }}>
       <Form>
@@ -9,25 +16,12 @@ export default function AssignmentEditor() {
           <Form.Control type="text" placeholder="A1 - ENV + HTML" />
         </Form.Group>
         <Card>
-          <Card.Body className="mb-2" contentEditable={true}>
-            The assignment is{" "}
-            <span className="text-danger">available online</span>
-            <br />
-            Submit a link to the landing page of your web application running on
-            netlify.
-            <br />
-            The landing page should include the following:
-            <br />
-            <br />
-            <ul>
-              <li>Your full name and section</li>
-              <li>Links to each of the lab assignments</li>
-              <li>Link to the Kanbas application</li>
-              <li>Link to all relevant source code repositories</li>
-            </ul>
-            <br />
-            The Kanbas application should include a link to navigate back to the
-            landing page.
+          <Card.Body
+            className="mb-2"
+            contentEditable={true}
+            style={{ minHeight: "300px" }}
+          >
+            {assignment?.description || "Add assignment description here"}
           </Card.Body>
         </Card>
         <br />
@@ -41,7 +35,11 @@ export default function AssignmentEditor() {
           >
             Points
           </Form.Label>
-          <Form.Control type="number" placeholder="100" />
+          <Form.Control
+            type="number"
+            defaultValue={assignment?.points}
+            placeholder="100"
+          />
         </Form.Group>
         <Form.Group
           className="mb-3 d-flex align-items-center"
@@ -133,29 +131,49 @@ export default function AssignmentEditor() {
               <option>Everyone</option>
             </Form.Select>
             <Form.Label className="fw-bold">Due</Form.Label>
-            <Form.Control className="mb-2" type="date" />
+            <Form.Control
+              className="mb-2"
+              type="date"
+              defaultValue={assignment?.dueDate}
+            />
             <Form.Group as={Row} className="mb-3 g-1">
               <Col>
                 <Form.Label className="mb-0 wd-f-small fw-bold">
                   Available
                 </Form.Label>
-                <Form.Control type="date" />
+                <Form.Control
+                  type="date"
+                  defaultValue={assignment?.availableFrom}
+                />
               </Col>
               <Col>
                 <Form.Label className="mb-0 wd-f-small fw-bold">
                   Until
                 </Form.Label>
-                <Form.Control type="date" />
+                <Form.Control
+                  type="date"
+                  defaultValue={assignment?.availableUntil}
+                />
               </Col>
             </Form.Group>
           </div>
         </Form.Group>
         <hr />
         <div id="wd-assignment-editor-btns" className="text-nowrap">
-          <Button variant="danger" size="sm" className="me-1 mb-4 float-end">
+          <Button
+            variant="danger"
+            size="sm"
+            className="me-1 mb-4 float-end"
+            onClick={() => navigate(`/Kambaz/Courses/${cid}/Assignments`)}
+          >
             Save
           </Button>
-          <Button variant="secondary" size="sm" className="me-1 mb-4 float-end">
+          <Button
+            variant="secondary"
+            size="sm"
+            className="me-1 mb-4 float-end"
+            onClick={() => navigate(`/Kambaz/Courses/${cid}/Assignments`)}
+          >
             Cancel
           </Button>
         </div>

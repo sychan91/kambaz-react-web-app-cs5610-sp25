@@ -45,7 +45,7 @@ export default function Assignments() {
                 <div className="assignment-text">
                   <span>
                     <Link
-                      to={`"/Kambaz/Courses/${cid}/Assignments/${assignment._id}`}
+                      to={`/Kambaz/Courses/${cid}/Assignments/${assignment._id}`}
                       className="fw-bold text-black text-decoration-none"
                     >
                       {assignment.title}
@@ -53,11 +53,13 @@ export default function Assignments() {
                     <br />
                     <span className="wd-assignment-f-small">
                       <span className="text-danger">Multiple Modules</span> |{" "}
-                      <b>Not available until</b> May 6 at 12:00am
+                      <b>Not available until</b> {assignment.availableUntil} at{" "}
+                      {assignment.availableTime}
                     </span>
                     <br />
                     <span className="wd-assignment-f-small">
-                      <b>Due</b> May 13 at 11:59pm | 100pts
+                      <b>Due</b> {assignment.dueDate} at {assignment.dueTime} |{" "}
+                      {assignment.points}pts
                     </span>
                   </span>
                 </div>
