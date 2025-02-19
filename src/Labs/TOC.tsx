@@ -3,37 +3,25 @@ import { Link, useLocation } from "react-router-dom";
 
 export default function TOC() {
   const { pathname } = useLocation();
+  const labs = [
+    { label: "Lab 1", path: "/Labs/Lab1", id: "wd-lab1" },
+    { label: "Lab 2", path: "/Labs/Lab2", id: "wd-lab2" },
+    { label: "Lab 3", path: "/Labs/Lab3", id: "wd-lab3" },
+    { label: "Lab 4", path: "/Labs/Lab4", id: "wd-lab4" },
+  ];
   return (
     <Nav variant="pills" id="wd-toc">
-      <Nav.Item>
-        <Nav.Link
-          as={Link}
-          to="/Labs/Lab1"
-          id="wd-a1"
-          active={pathname.includes("Lab1")}
-        >
-          Lab 1
-        </Nav.Link>
-      </Nav.Item>
-      <Nav.Item>
-        <Nav.Link
-          as={Link}
-          to="/Labs/Lab2"
-          id="wd-a2"
-          active={pathname.includes("Lab2")}
-        >
-          Lab 2
-        </Nav.Link>
-      </Nav.Item>
-      <Nav.Item>
-        <Nav.Link
-          as={Link}
-          to="/Labs/Lab3"
-          id="wd-a3"
-          active={pathname.includes("Lab3")}
-        >
-          Lab 3
-        </Nav.Link>
+      <Nav.Item className="nav nav-pills">
+        {labs.map((lab) => (
+          <Nav.Link
+            as={Link}
+            to={lab.path}
+            id={lab.id}
+            active={pathname == lab.path}
+          >
+            {lab.label}
+          </Nav.Link>
+        ))}
       </Nav.Item>
       <Nav.Item>
         <Nav.Link href="https://github.com/sychan91/kambaz-react-web-app-cs5610-sp25/tree/main">
