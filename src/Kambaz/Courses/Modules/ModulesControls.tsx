@@ -3,8 +3,21 @@ import { Button, Dropdown } from "react-bootstrap";
 import { FaPlus } from "react-icons/fa6";
 import GreenCheckmark from "./GreenCheckmark";
 import { MdDoNotDisturb } from "react-icons/md";
+import ModuleEditor from "./ModuleEditor";
 
-export default function ModulesControls() {
+export default function ModulesControls({
+  moduleName,
+  setModuleName,
+  addModule,
+}: {
+  moduleName: string;
+  setModuleName: (title: string) => void;
+  addModule: () => void;
+}) {
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   // Define options with proper types
   const options: Record<string, { label: string; icon: JSX.Element }> = {
     "Publish All": { label: "Publish All", icon: <GreenCheckmark /> },
@@ -45,12 +58,21 @@ export default function ModulesControls() {
       <Button
         id="wd-module-btn"
         variant="danger"
+        onClick={handleShow}
         size="sm"
         className="me-1 float-end"
       >
         <FaPlus className="position-relative me-2" style={{ bottom: "1px" }} />
         Module
       </Button>
+      <ModuleEditor
+        show={show}
+        handleClose={handleClose}
+        dialogTitle="Add Module"
+        moduleName={moduleName}
+        setModuleName={setModuleName}
+        addModule={addModule}
+      />
       <Dropdown
         id="wd-module-dropdown"
         onSelect={handleSelect}
