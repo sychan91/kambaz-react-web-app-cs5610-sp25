@@ -1,4 +1,4 @@
-import { ListGroup } from "react-bootstrap";
+import { FormControl, ListGroup } from "react-bootstrap";
 import ModulesControls from "./ModulesControls";
 import { BsGripVertical } from "react-icons/bs";
 import LessonControlButtons from "./LessonControlButtons";
@@ -25,7 +25,17 @@ export default function Modules() {
     setModuleName("");
   };
   const deleteModule = (moduleId: string) => {
-    setModules(modules.filter((m) => m._id !== moduleId));
+    setModules(modules.filter((m: any) => m._id !== moduleId));
+  };
+  const editModule = (moduleId: string) => {
+    setModules(
+      modules.map((m: any) =>
+        m._id === moduleId ? { ...m, editing: true } : m
+      )
+    );
+  };
+  const updateModule = (module: any) => {
+    setModules(modules.map((m: any) => (m._id === module._id ? module : m)));
   };
   return (
     <div>
@@ -44,10 +54,26 @@ export default function Modules() {
           >
             <div className="wd-title p-3 ps-2 bg-secondary">
               <BsGripVertical className="me-2 fs-5" />
-              {module.name}
+              {!module.editing && module.name}
+              {module.editing && (
+                <FormControl
+                  className="w-50 d-inline-block"
+                  onChange={(e) =>
+                    updateModule({ ...module, name: e.target.value })
+                  }
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter") {
+                      updateModule({ ...module, editing: false });
+                    }
+                  }}
+                  defaultValue={module.name}
+                />
+              )}
+
               <ModuleControlBtns
                 moduleId={module._id}
                 deleteModule={deleteModule}
+                editModule={editModule}
               />
             </div>
             {module.lessons && (
