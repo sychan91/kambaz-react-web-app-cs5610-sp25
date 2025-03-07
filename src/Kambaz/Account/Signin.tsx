@@ -1,22 +1,54 @@
 import { Button, FormControl } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { setCurrentUser } from "./reducer";
+import { useDispatch } from "react-redux";
+import { db } from "../Database";
 
 export default function Signin() {
+  const [credentials, setCredentials] = useState<any>({});
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const signin = () => {
+    const user = db.users.find(
+      (u: any) =>
+        (u.username === credentials.username && u.password) ===
+        credentials.password
+    );
+    if (user) {
+      dispatch(setCurrentUser(user));
+      navigate("/Kambaz/Dashboard");
+    } else {
+      alert("Invalid username or password");
+    }
+  };
   return (
     <div id="wd-signin-screen" className="wd-account-component-width">
       <h3>Sign in</h3>
-      <FormControl id="wd-username" placeholder="username" className="mb-2" />
+      <FormControl
+        id="wd-username"
+        defaultValue={credentials.username}
+        onChange={(e) =>
+          setCredentials({ ...credentials, username: e.target.value })
+        }
+        placeholder="username"
+        className="mb-2"
+      />
       <FormControl
         id="wd-password"
+        defaultValue={credentials.password}
+        onChange={(e) =>
+          setCredentials({ ...credentials, password: e.target.value })
+        }
         placeholder="password"
         type="password"
         className="mb-2"
       />
       <Button
+        onClick={signin}
         variant="primary"
         size="sm"
         className="w-100 mb-2"
-        href="#/Kambaz/Dashboard"
       >
         Sign in
       </Button>
