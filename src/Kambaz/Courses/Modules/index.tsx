@@ -5,45 +5,54 @@ import LessonControlButtons from "./LessonControlButtons";
 import ModuleControlBtns from "./ModuleControlBtns";
 import { useParams } from "react-router-dom";
 import { useState } from "react";
-import * as db from "../../Database";
+// import * as db from "../../Database";
+import { addModule, editModule, updateModule, deleteModule } from "./reducer";
+import { useDispatch, useSelector } from "react-redux";
 
 export default function Modules() {
   const { cid } = useParams<{ cid: string }>();
-  const _modules = db.modules.filter((m: any) => m.course === cid);
-  const [modules, setModules] = useState<any>(_modules);
+  // const _modules = db.modules.filter((m: any) => m.course === cid);
+  // const [modules, setModules] = useState<any>(_modules);
   const [moduleName, setModuleName] = useState("New Module");
-  const addModule = () => {
-    setModules([
-      ...modules,
-      {
-        _id: new Date().getTime().toString(),
-        name: moduleName,
-        course: cid,
-        lessons: [],
-      },
-    ]);
-    setModuleName("");
-  };
-  const deleteModule = (moduleId: string) => {
-    setModules(modules.filter((m: any) => m._id !== moduleId));
-  };
-  const editModule = (moduleId: string) => {
-    setModules(
-      modules.map((m: any) =>
-        m._id === moduleId ? { ...m, editing: true } : m
-      )
-    );
-  };
-  const updateModule = (module: any) => {
-    setModules(modules.map((m: any) => (m._id === module._id ? module : m)));
-  };
+  const modules = useSelector((state: any) =>
+    state.modules.modules.filter((module: any) => module.course === cid)
+  );
+  const dispatch = useDispatch();
+  // const addModule = () => {
+  //   setModules([
+  //     ...modules,
+  //     {
+  //       _id: new Date().getTime().toString(),
+  //       name: moduleName,
+  //       course: cid,
+  //       lessons: [],
+  //     },
+  //   ]);
+  //   setModuleName("");
+  // };
+  // const deleteModule = (moduleId: string) => {
+  //   setModules(modules.filter((m: any) => m._id !== moduleId));
+  // };
+  // const editModule = (moduleId: string) => {
+  //   setModules(
+  //     modules.map((m: any) =>
+  //       m._id === moduleId ? { ...m, editing: true } : m
+  //     )
+  //   );
+  // };
+  // const updateModule = (module: any) => {
+  //   setModules(modules.map((m: any) => (m._id === module._id ? module : m)));
+  // };
   return (
     <div>
       <div className="wd-module-control-padding">
         <ModulesControls
           setModuleName={setModuleName}
           moduleName={moduleName}
-          addModule={addModule}
+          addModule={() => {
+            dispatch(addModule({ name: moduleName, course: cid }));
+            setModuleName("");
+          }}
         />
       </div>
       <ListGroup className="rounded-0 wd-top-padding wd-module-padding">
@@ -59,11 +68,11 @@ export default function Modules() {
                 <FormControl
                   className="w-50 d-inline-block"
                   onChange={(e) =>
-                    updateModule({ ...module, name: e.target.value })
+                    dispatch(updateModule({ ...module, name: e.target.value }))
                   }
                   onKeyDown={(e) => {
                     if (e.key === "Enter") {
-                      updateModule({ ...module, editing: false });
+                      dispatch(updateModule({ ...module, editing: false }));
                     }
                   }}
                   defaultValue={module.name}
@@ -72,8 +81,8 @@ export default function Modules() {
 
               <ModuleControlBtns
                 moduleId={module._id}
-                deleteModule={deleteModule}
-                editModule={editModule}
+                deleteModule={(moduleId) => dispatch(deleteModule(moduleId))}
+                editModule={(moduleId) => dispatch(editModule(moduleId))}
               />
             </div>
             {module.lessons && (

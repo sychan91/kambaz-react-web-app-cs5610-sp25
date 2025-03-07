@@ -5,7 +5,7 @@ import KambazNavigation from "./Navigation";
 import Courses from "./Courses";
 import "./styles.css";
 import { useState } from "react";
-import * as db from "./Database";
+import { db } from "./Database";
 
 export default function Kambaz() {
   const [courses, setCourses] = useState<any[]>(db.courses);
