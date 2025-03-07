@@ -1,5 +1,5 @@
 import { Button, Card, Col, Form, Row } from "react-bootstrap";
-import * as db from "../../Database";
+import { db } from "../../Database";
 import { useParams, useNavigate } from "react-router-dom";
 
 export default function AssignmentEditor() {

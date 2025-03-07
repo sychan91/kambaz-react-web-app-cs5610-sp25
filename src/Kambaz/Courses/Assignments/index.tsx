@@ -6,7 +6,7 @@ import LessonControlButtons from "../Modules/LessonControlButtons";
 import { Link, useParams } from "react-router-dom";
 import { IoEllipsisVertical } from "react-icons/io5";
 import { TfiPlus } from "react-icons/tfi";
-import * as db from "../../Database";
+import { db } from "../../Database";
 
 export default function Assignments() {
   const { cid } = useParams();
