@@ -14,9 +14,12 @@ import { deleteAssignment } from "./reducer";
 
 export default function Assignments() {
   const { cid } = useParams();
+  const { currentUser } = useSelector((state: any) => state.accountReducer);
   const dispatch = useDispatch();
   const [showModal, setShowModal] = useState(false);
   const [selectedAssignment, setSelectedAssignment] = useState<any>(null);
+
+  const isFaculty = currentUser.role === "FACULTY";
 
   const assignments = useSelector((state: any) =>
     state.assignments?.assignments?.filter((a: any) => a.course === cid)
@@ -91,11 +94,15 @@ export default function Assignments() {
                 </div>
 
                 <div className="ms-auto">
-                  <FaTrashCan
-                    className="text-danger me-2 mb-1 fs-6"
-                    onClick={() => confirmDelete(assignment)}
-                    style={{ cursor: "pointer" }}
-                  />
+                  {isFaculty && (
+                    <>
+                      <FaTrashCan
+                        className="text-danger me-2 mb-1 fs-6"
+                        onClick={() => confirmDelete(assignment)}
+                        style={{ cursor: "pointer" }}
+                      />
+                    </>
+                  )}
                   <LessonControlButtons />
                 </div>
               </ListGroup.Item>
