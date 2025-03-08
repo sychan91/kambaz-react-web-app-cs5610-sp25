@@ -1,13 +1,39 @@
 import { Button, Card, Col, Form, Row } from "react-bootstrap";
-import { db } from "../../Database";
+// import { db } from "../../Database";
 import { useParams, useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { useState } from "react";
+import { addAssignment } from "./reducer";
 
 export default function AssignmentEditor() {
   const { cid, aid } = useParams();
   const navigate = useNavigate();
-  const assignment = db.assignments.find(
-    (a) => a._id === aid && a.course === cid
+  const dispatch = useDispatch();
+
+  // Find existing assignment or create a new one
+  const existingAssignment = useSelector((state: any) =>
+    state.assignments.assignments.find(
+      (a: any) => a._id === aid && a.course === cid
+    )
   );
+
+  const [assignment, setAssignment] = useState(
+    existingAssignment || {
+      _id: new Date().getTime().toString(),
+      title: "",
+      description: "",
+      points: "",
+      dueDate: "",
+      availableFrom: "",
+      availableUntil: "",
+      course: cid,
+    }
+  );
+
+  const save = () => {
+    dispatch(addAssignment(assignment));
+    navigate(`/Kambaz/Courses/${cid}/Assignments`);
+  };
   return (
     <div id="wd-assignment-editor" className="ps-3" style={{ width: "600px" }}>
       <Form>
@@ -15,17 +41,26 @@ export default function AssignmentEditor() {
           <Form.Label>Assignment Name</Form.Label>
           <Form.Control
             type="text"
-            defaultValue={assignment?.title}
-            placeholder="A1 - ENV + HTML"
+            value={assignment.title}
+            onChange={(e) =>
+              setAssignment({ ...assignment, title: e.target.value })
+            }
+            placeholder="Assignment Name"
           />
         </Form.Group>
         <Card>
           <Card.Body
             className="mb-2"
             contentEditable={true}
+            onChange={(e) =>
+              setAssignment({
+                ...assignment,
+                description: (e.target as HTMLDivElement).innerText,
+              })
+            }
             style={{ minHeight: "300px" }}
           >
-            {assignment?.description || "Add assignment description here"}
+            {assignment.description || "Add assignment description here"}
           </Card.Body>
         </Card>
         <br />
@@ -41,7 +76,10 @@ export default function AssignmentEditor() {
           </Form.Label>
           <Form.Control
             type="number"
-            defaultValue={assignment?.points}
+            value={assignment.points}
+            onChange={(e) =>
+              setAssignment({ ...assignment, points: e.target.value })
+            }
             placeholder="100"
           />
         </Form.Group>
@@ -138,7 +176,10 @@ export default function AssignmentEditor() {
             <Form.Control
               className="mb-2"
               type="date"
-              defaultValue={assignment?.dueDate}
+              value={assignment.dueDate}
+              onChange={(e) =>
+                setAssignment({ ...assignment, dueDate: e.target.value })
+              }
             />
             <Form.Group as={Row} className="mb-3 g-1">
               <Col>
@@ -147,7 +188,13 @@ export default function AssignmentEditor() {
                 </Form.Label>
                 <Form.Control
                   type="date"
-                  defaultValue={assignment?.availableFrom}
+                  value={assignment.availableFrom}
+                  onChange={(e) =>
+                    setAssignment({
+                      ...assignment,
+                      availableFrom: e.target.value,
+                    })
+                  }
                 />
               </Col>
               <Col>
@@ -156,7 +203,13 @@ export default function AssignmentEditor() {
                 </Form.Label>
                 <Form.Control
                   type="date"
-                  defaultValue={assignment?.availableUntil}
+                  value={assignment.availableUntil}
+                  onChange={(e) =>
+                    setAssignment({
+                      ...assignment,
+                      availableUntil: e.target.value,
+                    })
+                  }
                 />
               </Col>
             </Form.Group>
@@ -168,7 +221,7 @@ export default function AssignmentEditor() {
             variant="danger"
             size="sm"
             className="me-1 mb-4 float-end"
-            onClick={() => navigate(`/Kambaz/Courses/${cid}/Assignments`)}
+            onClick={save}
           >
             Save
           </Button>

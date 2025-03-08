@@ -1,11 +1,19 @@
 import { Button, FormControl, InputGroup } from "react-bootstrap";
 import { TfiPlus } from "react-icons/tfi";
 import { HiMagnifyingGlass } from "react-icons/hi2";
+import { useNavigate, useParams } from "react-router-dom";
 
 export default function AssignmentControls() {
+  const navigate = useNavigate();
+  const { cid } = useParams();
   return (
     <div id="wd-assignment-controls" className="text-wrap">
-      <Button variant="danger" size="sm" className="me-1 float-end">
+      <Button
+        variant="danger"
+        size="sm"
+        className="me-1 float-end"
+        onClick={() => navigate(`/Kambaz/Courses/${cid}/Assignments/new`)}
+      >
         <TfiPlus className="position-relative me-2" style={{ bottom: "1px" }} />
         Assignment
       </Button>

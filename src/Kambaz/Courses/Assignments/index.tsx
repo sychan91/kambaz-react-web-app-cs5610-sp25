@@ -6,11 +6,14 @@ import LessonControlButtons from "../Modules/LessonControlButtons";
 import { Link, useParams } from "react-router-dom";
 import { IoEllipsisVertical } from "react-icons/io5";
 import { TfiPlus } from "react-icons/tfi";
-import { db } from "../../Database";
+// import { db } from "../../Database";
+import { useSelector } from "react-redux";
 
 export default function Assignments() {
   const { cid } = useParams();
-  const assignments = db.assignments.filter((a: any) => a.course === cid);
+  const assignments = useSelector((state: any) =>
+    state.assignments?.assignments?.filter((a: any) => a.course === cid)
+  );
   return (
     <div id="wd-assignments">
       <div className="wd-module-control-padding">
@@ -35,8 +38,11 @@ export default function Assignments() {
             </div>
           </div>
           <ListGroup className="wd-assignments rounded-0">
-            {assignments.map((assignment) => (
-              <ListGroup.Item className="wd-assignment p-3 d-flex align-items-center wd-lesson">
+            {assignments.map((assignment: any) => (
+              <ListGroup.Item
+                key={assignment._id}
+                className="wd-assignment p-3 d-flex align-items-center wd-lesson"
+              >
                 <div className="d-flex align-items-center me-3">
                   <BsGripVertical className="fs-5 me-2" />
                   <LuNotebookPen className="fs-6" />
