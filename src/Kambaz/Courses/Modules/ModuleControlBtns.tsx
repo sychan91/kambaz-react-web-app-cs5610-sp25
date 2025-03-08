@@ -18,10 +18,12 @@ export default function ModuleControlBtns({
       <TiPencil
         className="text-primary me-2 fs-5"
         onClick={() => editModule(moduleId)}
+        style={{ cursor: "pointer" }}
       />
       <FaTrashCan
         className="text-danger me-2 mb-1 fs-6"
         onClick={() => deleteModule(moduleId)}
+        style={{ cursor: "pointer" }}
       />
       <GreenCheckmark />
       <HiOutlinePlus className="fs-5" />

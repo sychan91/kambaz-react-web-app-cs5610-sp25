@@ -94,6 +94,7 @@ export default function Assignments() {
                   <FaTrashCan
                     className="text-danger me-2 mb-1 fs-6"
                     onClick={() => confirmDelete(assignment)}
+                    style={{ cursor: "pointer" }}
                   />
                   <LessonControlButtons />
                 </div>
