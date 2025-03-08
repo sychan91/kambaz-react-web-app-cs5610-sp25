@@ -1,9 +1,9 @@
-import { Button, Card, Col, Form, Row } from "react-bootstrap";
+import { Button, Col, Form, Row } from "react-bootstrap";
 // import { db } from "../../Database";
 import { useParams, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useState } from "react";
-import { addAssignment } from "./reducer";
+import { addAssignment, updateAssignment } from "./reducer";
 
 export default function AssignmentEditor() {
   const { cid, aid } = useParams();
@@ -31,7 +31,11 @@ export default function AssignmentEditor() {
   );
 
   const save = () => {
-    dispatch(addAssignment(assignment));
+    if (existingAssignment) {
+      dispatch(updateAssignment(assignment));
+    } else {
+      dispatch(addAssignment(assignment));
+    }
     navigate(`/Kambaz/Courses/${cid}/Assignments`);
   };
   return (
@@ -48,21 +52,18 @@ export default function AssignmentEditor() {
             placeholder="Assignment Name"
           />
         </Form.Group>
-        <Card>
-          <Card.Body
-            className="mb-2"
-            contentEditable={true}
+        <Form.Group className="mb-3">
+          <Form.Control
+            as="textarea"
+            rows={5}
+            value={assignment.description}
             onChange={(e) =>
-              setAssignment({
-                ...assignment,
-                description: (e.target as HTMLDivElement).innerText,
-              })
+              setAssignment({ ...assignment, description: e.target.value })
             }
+            placeholder="Add assignment description here"
             style={{ minHeight: "300px" }}
-          >
-            {assignment.description || "Add assignment description here"}
-          </Card.Body>
-        </Card>
+          />
+        </Form.Group>
         <br />
         <Form.Group
           className="mb-3 d-flex align-items-center"
