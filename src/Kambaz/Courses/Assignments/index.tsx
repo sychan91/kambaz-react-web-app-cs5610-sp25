@@ -1,4 +1,4 @@
-import { ListGroup } from "react-bootstrap";
+import { Button, ListGroup, Modal } from "react-bootstrap";
 import AssignmentControls from "./AssignmentControls";
 import { BsGripVertical } from "react-icons/bs";
 import { LuNotebookPen } from "react-icons/lu";
@@ -7,13 +7,33 @@ import { Link, useParams } from "react-router-dom";
 import { IoEllipsisVertical } from "react-icons/io5";
 import { TfiPlus } from "react-icons/tfi";
 // import { db } from "../../Database";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { FaTrashCan } from "react-icons/fa6";
+import { useState } from "react";
+import { deleteAssignment } from "./reducer";
 
 export default function Assignments() {
   const { cid } = useParams();
+  const dispatch = useDispatch();
+  const [showModal, setShowModal] = useState(false);
+  const [selectedAssignment, setSelectedAssignment] = useState<any>(null);
+
   const assignments = useSelector((state: any) =>
     state.assignments?.assignments?.filter((a: any) => a.course === cid)
   );
+
+  const confirmDelete = (assignment: any) => {
+    setSelectedAssignment(assignment);
+    setShowModal(true);
+  };
+
+  const handleDelete = (_id: any) => {
+    if (selectedAssignment) {
+      dispatch(deleteAssignment(selectedAssignment._id));
+    }
+    setShowModal(false);
+    setSelectedAssignment(null);
+  };
   return (
     <div id="wd-assignments">
       <div className="wd-module-control-padding">
@@ -71,6 +91,10 @@ export default function Assignments() {
                 </div>
 
                 <div className="ms-auto">
+                  <FaTrashCan
+                    className="text-danger me-2 mb-1 fs-6"
+                    onClick={() => confirmDelete(assignment)}
+                  />
                   <LessonControlButtons />
                 </div>
               </ListGroup.Item>
@@ -78,6 +102,23 @@ export default function Assignments() {
           </ListGroup>
         </ListGroup.Item>
       </ListGroup>
+
+      <Modal show={showModal} onHide={() => setShowModal(false)}>
+        <Modal.Header closeButton>
+          <Modal.Title>Confirm Delete</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          Are you sure you want to delete this assignment?
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={() => setShowModal(false)}>
+            Cancel
+          </Button>
+          <Button variant="danger" onClick={handleDelete}>
+            Delete
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </div>
   );
 }
