@@ -25,12 +25,16 @@ export default function AssignmentControls() {
             />
             Assignment
           </Button>
+          <Button variant="secondary" size="sm" className="me-1 float-end">
+            <TfiPlus
+              className="position-relative me-2"
+              style={{ bottom: "1px" }}
+            />
+            Group
+          </Button>
         </>
       )}
-      <Button variant="secondary" size="sm" className="me-1 float-end">
-        <TfiPlus className="position-relative me-2" style={{ bottom: "1px" }} />
-        Group
-      </Button>
+
       <div className="d-flex justify-content-between aling-items-ceneter">
         <div className="d-flex justify-content-start align-items-center">
           <InputGroup
