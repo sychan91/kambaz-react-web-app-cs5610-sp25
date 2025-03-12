@@ -73,12 +73,16 @@ export default function Assignments() {
 
                 <div className="assignment-text">
                   <span>
-                    <Link
-                      to={`/Kambaz/Courses/${cid}/Assignments/${assignment._id}`}
-                      className="fw-bold text-black text-decoration-none"
-                    >
-                      {assignment.title}
-                    </Link>
+                    {isFaculty ? (
+                      <Link
+                        to={`/Kambaz/Courses/${cid}/Assignments/${assignment._id}`}
+                        className="fw-bold text-black text-decoration-none"
+                      >
+                        {assignment.title}
+                      </Link>
+                    ) : (
+                      <span className="fw-bold">{assignment.title}</span>
+                    )}
                     <br />
                     <span className="wd-assignment-f-small">
                       <span className="text-danger">Multiple Modules</span> |{" "}
