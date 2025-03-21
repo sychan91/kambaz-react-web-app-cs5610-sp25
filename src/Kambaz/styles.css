@@ -50,7 +50,7 @@
 
 /* Course Nav Rules */
 .list-group.wd > .list-group-item.active {
-    color: black;
+    color: black !important;;
     background-color: white;
     border-left: 2px solid black !important;
 }
