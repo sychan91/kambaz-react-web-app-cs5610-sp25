@@ -8,6 +8,7 @@ export default function TOC() {
     { label: "Lab 2", path: "/Labs/Lab2", id: "wd-lab2" },
     { label: "Lab 3", path: "/Labs/Lab3", id: "wd-lab3" },
     { label: "Lab 4", path: "/Labs/Lab4", id: "wd-lab4" },
+    { label: "Lab 5", path: "/Labs/Lab5", id: "wd-lab5" },
   ];
   return (
     <Nav variant="pills" id="wd-toc">
