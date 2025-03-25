@@ -15,6 +15,7 @@ export default function TOC() {
       <Nav.Item className="nav nav-pills">
         {labs.map((lab) => (
           <Nav.Link
+            key={lab.id}
             as={Link}
             to={lab.path}
             id={lab.id}
