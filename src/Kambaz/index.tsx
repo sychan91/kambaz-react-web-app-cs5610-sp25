@@ -7,6 +7,7 @@ import "./styles.css";
 import { useState } from "react";
 import { db } from "./Database";
 import ProtectedRoute from "./Account/ProtectedRoute";
+import Session from "./Account/Session";
 
 export default function Kambaz() {
   const [courses, setCourses] = useState<any[]>(db.courses);
@@ -38,55 +39,57 @@ export default function Kambaz() {
     );
   };
   return (
-    <div id="wd-kambaz">
-      <KambazNavigation />
-      <div className="wd-main-content-offset">
-        <Routes>
-          <Route path="/" element={<Navigate to="Account" />} />
-          <Route path="Account/*" element={<Account />} />
-          <Route
-            path="Dashboard"
-            element={
-              <ProtectedRoute>
-                <Dashboard
-                  courses={courses}
-                  course={course}
-                  setCourse={setCourse}
-                  addNewCourse={addNewCourse}
-                  deleteCourse={deleteCourse}
-                  updateCourse={updateCourse}
-                />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="Courses"
-            element={
-              <ProtectedRoute>
-                <Dashboard
-                  courses={courses}
-                  course={course}
-                  setCourse={setCourse}
-                  addNewCourse={addNewCourse}
-                  deleteCourse={deleteCourse}
-                  updateCourse={updateCourse}
-                />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="Courses/:cid/*"
-            element={
-              <ProtectedRoute>
-                <Courses courses={courses} />
-              </ProtectedRoute>
-            }
-          />
+    <Session>
+      <div id="wd-kambaz">
+        <KambazNavigation />
+        <div className="wd-main-content-offset">
+          <Routes>
+            <Route path="/" element={<Navigate to="Account" />} />
+            <Route path="Account/*" element={<Account />} />
+            <Route
+              path="Dashboard"
+              element={
+                <ProtectedRoute>
+                  <Dashboard
+                    courses={courses}
+                    course={course}
+                    setCourse={setCourse}
+                    addNewCourse={addNewCourse}
+                    deleteCourse={deleteCourse}
+                    updateCourse={updateCourse}
+                  />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="Courses"
+              element={
+                <ProtectedRoute>
+                  <Dashboard
+                    courses={courses}
+                    course={course}
+                    setCourse={setCourse}
+                    addNewCourse={addNewCourse}
+                    deleteCourse={deleteCourse}
+                    updateCourse={updateCourse}
+                  />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="Courses/:cid/*"
+              element={
+                <ProtectedRoute>
+                  <Courses courses={courses} />
+                </ProtectedRoute>
+              }
+            />
 
-          <Route path="Calendar" element={<h3>Calendar</h3>} />
-          <Route path="Inbox" element={<h3>Inbox</h3>} />
-        </Routes>
+            <Route path="Calendar" element={<h3>Calendar</h3>} />
+            <Route path="Inbox" element={<h3>Inbox</h3>} />
+          </Routes>
+        </div>
       </div>
-    </div>
+    </Session>
   );
 }
