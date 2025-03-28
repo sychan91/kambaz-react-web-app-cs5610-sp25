@@ -6,6 +6,7 @@ import { useState } from "react";
 
 export default function Dashboard({
   courses,
+  allCourses,
   course,
   setCourse,
   addNewCourse,
@@ -13,6 +14,7 @@ export default function Dashboard({
   updateCourse,
 }: {
   courses: any[];
+  allCourses: any[];
   course: any;
   setCourse: (course: any) => void;
   addNewCourse: () => void;
@@ -36,7 +38,7 @@ export default function Dashboard({
   const isStudent = currentUser.role === "STUDENT";
 
   // Filter courses based on enrollment status
-  const displayedCourses = courses; // Show only enrolled courses
+  const displayedCourses = showAllCourses ? allCourses : courses; // Show only enrolled courses
 
   const isEnrolledIn = (courseId: string) =>
     courses.some((c) => c._id === courseId);

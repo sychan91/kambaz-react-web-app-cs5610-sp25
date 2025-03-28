@@ -9,21 +9,24 @@ import { useEffect, useState } from "react";
 import ProtectedRoute from "./Account/ProtectedRoute";
 import Session from "./Account/Session";
 import * as userClient from "./Account/client";
-// import * as coursesClient from "./Courses/client";
+import * as coursesClient from "./Courses/client";
 import { useSelector } from "react-redux";
 
 export default function Kambaz() {
   const [courses, setCourses] = useState<any[]>([]);
+  const [allCourses, setAllCourses] = useState<any[]>([]);
   const { currentUser } = useSelector((state: any) => state.accountReducer);
-  const fetchCourses = async () => {
-    try {
-      const courses = await userClient.findMyCourses();
-      setCourses(courses);
-    } catch (error) {
-      console.error(error);
-    }
-  };
   useEffect(() => {
+    const fetchCourses = async () => {
+      try {
+        const myCourses = await userClient.findMyCourses(); // Enrolled
+        const everyCourse = await coursesClient.fetchAllCourses(); // All
+        setCourses(myCourses);
+        setAllCourses(everyCourse);
+      } catch (error) {
+        console.error("Failed to fetch courses:", error);
+      }
+    };
     if (currentUser) {
       fetchCourses();
     }
@@ -69,6 +72,7 @@ export default function Kambaz() {
                 <ProtectedRoute>
                   <Dashboard
                     courses={courses}
+                    allCourses={allCourses}
                     course={course}
                     setCourse={setCourse}
                     addNewCourse={addNewCourse}
@@ -84,6 +88,7 @@ export default function Kambaz() {
                 <ProtectedRoute>
                   <Dashboard
                     courses={courses}
+                    allCourses={allCourses}
                     course={course}
                     setCourse={setCourse}
                     addNewCourse={addNewCourse}
