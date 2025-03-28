@@ -21,3 +21,11 @@ export const updateAssignment = async (assignment: any) => {
   );
   return data;
 };
+
+export const createAssignment = async (courseId: string, assignment: any) => {
+  const { data } = await axios.post(
+    `${COURSES_API}/${courseId}/assignments`,
+    assignment
+  );
+  return data;
+};
