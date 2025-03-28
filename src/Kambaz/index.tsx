@@ -48,7 +48,8 @@ export default function Kambaz() {
     const status = await coursesClient.deleteCourse(courseId);
     setCourses(courses.filter((course) => course._id !== courseId));
   };
-  const updateCourse = () => {
+  const updateCourse = async () => {
+    await coursesClient.updateCourse(course);
     setCourses(
       courses.map((c) => {
         if (c._id === course._id) {
