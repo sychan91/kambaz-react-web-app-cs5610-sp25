@@ -5,6 +5,7 @@ import LessonControlButtons from "./LessonControlButtons";
 import ModuleControlBtns from "./ModuleControlBtns";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
+import * as modulesClient from "./client";
 // import * as db from "../../Database";
 import {
   addModule,
@@ -40,31 +41,11 @@ export default function Modules() {
     const module = await coursesClient.createModuleForCourse(cid, newModule);
     dispatch(addModule(module));
   };
-  // const addModule = () => {
-  //   setModules([
-  //     ...modules,
-  //     {
-  //       _id: new Date().getTime().toString(),
-  //       name: moduleName,
-  //       course: cid,
-  //       lessons: [],
-  //     },
-  //   ]);
-  //   setModuleName("");
-  // };
-  // const deleteModule = (moduleId: string) => {
-  //   setModules(modules.filter((m: any) => m._id !== moduleId));
-  // };
-  // const editModule = (moduleId: string) => {
-  //   setModules(
-  //     modules.map((m: any) =>
-  //       m._id === moduleId ? { ...m, editing: true } : m
-  //     )
-  //   );
-  // };
-  // const updateModule = (module: any) => {
-  //   setModules(modules.map((m: any) => (m._id === module._id ? module : m)));
-  // };
+
+  const removeModule = async (moduleId: string) => {
+    await modulesClient.deleteModule(moduleId);
+    dispatch(deleteModule(moduleId));
+  };
   return (
     <div>
       <div className="wd-module-control-padding">
@@ -100,7 +81,7 @@ export default function Modules() {
 
               <ModuleControlBtns
                 moduleId={module._id}
-                deleteModule={(moduleId) => dispatch(deleteModule(moduleId))}
+                deleteModule={(moduleId) => removeModule(moduleId)}
                 editModule={(moduleId) => dispatch(editModule(moduleId))}
               />
             </div>
