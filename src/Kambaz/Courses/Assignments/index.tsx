@@ -53,8 +53,9 @@ export default function Assignments() {
     setShowModal(true);
   };
 
-  const handleDelete = (_id: any) => {
+  const handleDelete = async (_id: any) => {
     if (selectedAssignment) {
+      await assignmentsClient.deleteAssignment(selectedAssignment._id);
       dispatch(deleteAssignment(selectedAssignment._id));
     }
     setShowModal(false);

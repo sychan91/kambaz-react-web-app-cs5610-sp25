@@ -7,3 +7,10 @@ export const findAssignmentsForCourse = async (courseId: string) => {
   const response = await axios.get(`${COURSES_API}/${courseId}/assignments`);
   return response.data;
 };
+
+export const deleteAssignment = async (assignmentId: string) => {
+  const response = await axios.delete(
+    `${REMOTE_SERVER}/api/assignments/${assignmentId}`
+  );
+  return response.data;
+};
