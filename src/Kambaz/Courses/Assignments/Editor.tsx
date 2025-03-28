@@ -4,6 +4,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useState } from "react";
 import { addAssignment, updateAssignment } from "./reducer";
+import * as assignmentsClient from "./client";
 
 export default function AssignmentEditor() {
   const { cid, aid } = useParams();
@@ -30,9 +31,10 @@ export default function AssignmentEditor() {
     }
   );
 
-  const save = () => {
+  const save = async () => {
     if (existingAssignment) {
-      dispatch(updateAssignment(assignment));
+      const updated = await assignmentsClient.updateAssignment(assignment);
+      dispatch(updateAssignment(updated));
     } else {
       dispatch(addAssignment(assignment));
     }
