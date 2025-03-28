@@ -40,8 +40,8 @@ export default function Kambaz() {
     endDate: "2023-12-15",
     description: "New Description",
   });
-  const addNewCourse = () => {
-    const newCourse = { ...course, _id: new Date().getTime().toString() };
+  const addNewCourse = async () => {
+    const newCourse = await userClient.createCourse(course);
     setCourses([...courses, newCourse]);
   };
   const deleteCourse = (courseId: string) => {
