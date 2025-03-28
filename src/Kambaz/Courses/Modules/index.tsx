@@ -33,6 +33,13 @@ export default function Modules() {
   useEffect(() => {
     fetchModules();
   }, []);
+
+  const createModuleForCourse = async () => {
+    if (!cid) return;
+    const newModule = { name: moduleName, course: cid };
+    const module = await coursesClient.createModuleForCourse(cid, newModule);
+    dispatch(addModule(module));
+  };
   // const addModule = () => {
   //   setModules([
   //     ...modules,
@@ -64,10 +71,7 @@ export default function Modules() {
         <ModulesControls
           setModuleName={setModuleName}
           moduleName={moduleName}
-          addModule={() => {
-            dispatch(addModule({ name: moduleName, course: cid }));
-            setModuleName("");
-          }}
+          addModule={createModuleForCourse}
         />
       </div>
       <ListGroup className="rounded-0 wd-top-padding wd-module-padding">
