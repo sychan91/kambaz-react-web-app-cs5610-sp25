@@ -9,6 +9,7 @@ import { useEffect, useState } from "react";
 import ProtectedRoute from "./Account/ProtectedRoute";
 import Session from "./Account/Session";
 import * as userClient from "./Account/client";
+// import * as coursesClient from "./Courses/client";
 import { useSelector } from "react-redux";
 
 export default function Kambaz() {
@@ -23,7 +24,9 @@ export default function Kambaz() {
     }
   };
   useEffect(() => {
-    fetchCourses();
+    if (currentUser) {
+      fetchCourses();
+    }
   }, [currentUser]);
   const [course, setCourse] = useState<any>({
     _id: "0",

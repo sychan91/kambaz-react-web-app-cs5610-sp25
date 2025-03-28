@@ -20,9 +20,9 @@ export default function Dashboard({
   updateCourse: () => void;
 }) {
   const { currentUser } = useSelector((state: any) => state.accountReducer);
-  const enrollments = useSelector(
-    (state: any) => state.enrollmentsReducer.enrollments
-  );
+  // const enrollments = useSelector(
+  //   (state: any) => state.enrollmentsReducer.enrollments
+  // );
   const dispatch = useDispatch();
 
   if (!currentUser) {
@@ -36,19 +36,14 @@ export default function Dashboard({
   const isStudent = currentUser.role === "STUDENT";
 
   // Filter courses based on enrollment status
-  const displayedCourses = showAllCourses
-    ? courses // Show all courses
-    : courses.filter((course) =>
-        enrollments.some(
-          (e: any) => e.user === currentUser._id && e.course === course._id
-        )
-      ); // Show only enrolled courses
+  const displayedCourses = courses; // Show only enrolled courses
+
+  const isEnrolledIn = (courseId: string) =>
+    courses.some((c) => c._id === courseId);
 
   // Toggle enrollment
   const toggleEnrollment = (courseId: string) => {
-    const isEnrolled = enrollments.some(
-      (e: any) => e.user === currentUser._id && e.course === courseId
-    );
+    const isEnrolled = isEnrolledIn(courseId);
     if (isEnrolled) {
       dispatch(unenroll({ user: currentUser._id, course: courseId }));
     } else {
@@ -109,12 +104,8 @@ export default function Dashboard({
       <hr />
       <div id="wd-dashboard-courses">
         <Row xs={1} md={5} className="g-4">
-          {displayedCourses.map((course) => {
-            // Check if user is enrolled
-            const isEnrolled = enrollments.some(
-              (e: any) => e.user === currentUser._id && e.course === course._id
-            );
-
+          {displayedCourses.map((course: any) => {
+            const isEnrolled = isEnrolledIn(course._id);
             return (
               <Col
                 key={course._id}
@@ -136,6 +127,19 @@ export default function Dashboard({
                       }
                     }}
                   >
+                    {/* <Link
+                    className="wd-dashboard-course-link text-decoration-none text-dark"
+                    to={
+                      isEnrolled || isFaculty
+                        ? `/Kambaz/Courses/${course._id}/Home`
+                        : "#"
+                    }
+                    onClick={(e) => {
+                      if (!isEnrolled && isStudent) {
+                        e.preventDefault();
+                      }
+                    }}
+                  > */}
                     <Card.Img
                       variant="top"
                       width="100%"
