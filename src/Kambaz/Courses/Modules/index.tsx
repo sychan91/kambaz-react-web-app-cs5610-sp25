@@ -4,10 +4,17 @@ import { BsGripVertical } from "react-icons/bs";
 import LessonControlButtons from "./LessonControlButtons";
 import ModuleControlBtns from "./ModuleControlBtns";
 import { useParams } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 // import * as db from "../../Database";
-import { addModule, editModule, updateModule, deleteModule } from "./reducer";
+import {
+  addModule,
+  editModule,
+  updateModule,
+  deleteModule,
+  setModules,
+} from "./reducer";
 import { useDispatch, useSelector } from "react-redux";
+import * as coursesClient from "../client";
 
 export default function Modules() {
   const { cid } = useParams<{ cid: string }>();
@@ -18,6 +25,14 @@ export default function Modules() {
     state.modules.modules.filter((module: any) => module.course === cid)
   );
   const dispatch = useDispatch();
+
+  const fetchModules = async () => {
+    const modules = await coursesClient.findModulesForCourse(cid as string);
+    dispatch(setModules(modules));
+  };
+  useEffect(() => {
+    fetchModules();
+  }, []);
   // const addModule = () => {
   //   setModules([
   //     ...modules,
