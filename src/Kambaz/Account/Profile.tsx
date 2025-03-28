@@ -1,6 +1,6 @@
 import { Button, FormControl } from "react-bootstrap";
 import { useDispatch } from "react-redux";
-import { logoutUser } from "./reducer";
+// import { logoutUser } from "./reducer";
 import { useNavigate } from "react-router";
 import { useSelector } from "react-redux";
 import { useState } from "react";
@@ -17,8 +17,9 @@ export default function Profile() {
     const updatedProfile = await client.updateUser(fullProfile);
     dispatch(setCurrentUser(updatedProfile));
   };
-  const signout = () => {
-    dispatch(logoutUser());
+  const signout = async () => {
+    await client.signout();
+    dispatch(setCurrentUser(null));
     navigate("/Kambaz/Account/Signin");
   };
   return (
