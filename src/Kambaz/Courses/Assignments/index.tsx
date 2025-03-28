@@ -9,8 +9,9 @@ import { TfiPlus } from "react-icons/tfi";
 // import { db } from "../../Database";
 import { useSelector, useDispatch } from "react-redux";
 import { FaTrashCan } from "react-icons/fa6";
-import { useState } from "react";
-import { deleteAssignment } from "./reducer";
+import { useState, useEffect } from "react";
+import { deleteAssignment, setAssignments } from "./reducer";
+import * as assignmentsClient from "./client";
 
 export default function Assignments() {
   const { cid } = useParams();
@@ -20,6 +21,28 @@ export default function Assignments() {
   const [selectedAssignment, setSelectedAssignment] = useState<any>(null);
 
   const isFaculty = currentUser.role === "FACULTY";
+
+  const fetchAssignments = async () => {
+    const serverAssignments = await assignmentsClient.findAssignmentsForCourse(
+      cid as string
+    );
+    dispatch(setAssignments(serverAssignments));
+  };
+
+  useEffect(() => {
+    fetchAssignments();
+  }, [currentUser]);
+
+  // useEffect(() => {
+  //   const fetchAssignments = async () => {
+  //     const serverAssignments =
+  //       await assignmentsClient.findAssignmentsForCourse(cid as string);
+  //     dispatch(setAssignments(serverAssignments));
+  //   };
+  //   if (cid) {
+  //     fetchAssignments();
+  //   }
+  // }, [cid]);
 
   const assignments = useSelector((state: any) =>
     state.assignments?.assignments?.filter((a: any) => a.course === cid)
