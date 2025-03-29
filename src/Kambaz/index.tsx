@@ -16,6 +16,17 @@ export default function Kambaz() {
   const [courses, setCourses] = useState<any[]>([]);
   const [allCourses, setAllCourses] = useState<any[]>([]);
   const { currentUser } = useSelector((state: any) => state.accountReducer);
+
+  const enrollments = useSelector(
+    (state: any) => state.enrollmentsReducer.enrollments
+  );
+
+  const enrolledCourses = allCourses.filter((course) =>
+    enrollments.some(
+      (e: any) => e.user === currentUser?._id && e.course === course._id
+    )
+  );
+
   useEffect(() => {
     const fetchCourses = async () => {
       try {
@@ -73,7 +84,7 @@ export default function Kambaz() {
               element={
                 <ProtectedRoute>
                   <Dashboard
-                    courses={courses}
+                    courses={enrolledCourses}
                     allCourses={allCourses}
                     course={course}
                     setCourse={setCourse}
@@ -89,7 +100,7 @@ export default function Kambaz() {
               element={
                 <ProtectedRoute>
                   <Dashboard
-                    courses={courses}
+                    courses={enrolledCourses}
                     allCourses={allCourses}
                     course={course}
                     setCourse={setCourse}

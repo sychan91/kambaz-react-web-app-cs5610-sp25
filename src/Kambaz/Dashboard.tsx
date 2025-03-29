@@ -1,8 +1,9 @@
 import { Button, Card, Col, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { enroll, unenroll } from "./Enrollments/reducer";
-import { useState } from "react";
+import { enroll, unenroll, setEnrollments } from "./Enrollments/reducer";
+import { useEffect, useState } from "react";
+import * as enrollmentsClient from "./Enrollments/client";
 
 export default function Dashboard({
   courses,
@@ -22,14 +23,29 @@ export default function Dashboard({
   updateCourse: () => void;
 }) {
   const { currentUser } = useSelector((state: any) => state.accountReducer);
-  // const enrollments = useSelector(
-  //   (state: any) => state.enrollmentsReducer.enrollments
-  // );
+  const enrollments = useSelector(
+    (state: any) => state.enrollmentsReducer.enrollments
+  );
   const dispatch = useDispatch();
 
   if (!currentUser) {
     return null;
   }
+
+  useEffect(() => {
+    const fetchEnrollments = async () => {
+      const enrolledCourses = await enrollmentsClient.findEnrolledCourses(
+        currentUser._id
+      );
+      const userEnrollments = enrolledCourses.map((course: any) => ({
+        user: currentUser._id,
+        course: course._id,
+      }));
+      dispatch(setEnrollments(userEnrollments));
+    };
+
+    fetchEnrollments();
+  }, [currentUser, dispatch]);
 
   // Toggle state for showing all courses vs enrolled courses
   const [showAllCourses, setShowAllCourses] = useState(false);
@@ -44,11 +60,16 @@ export default function Dashboard({
     courses.some((c) => c._id === courseId);
 
   // Toggle enrollment
-  const toggleEnrollment = (courseId: string) => {
-    const isEnrolled = isEnrolledIn(courseId);
+  const toggleEnrollment = async (courseId: string) => {
+    const isEnrolled = enrollments.some(
+      (e: any) => e.user === currentUser._id && e.course === courseId
+    );
+
     if (isEnrolled) {
+      await enrollmentsClient.unenrollFromCourse(currentUser._id, courseId);
       dispatch(unenroll({ user: currentUser._id, course: courseId }));
     } else {
+      await enrollmentsClient.enrollInCourse(currentUser._id, courseId);
       dispatch(enroll({ user: currentUser._id, course: courseId }));
     }
   };
