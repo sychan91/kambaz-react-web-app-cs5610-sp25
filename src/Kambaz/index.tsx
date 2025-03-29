@@ -10,12 +10,16 @@ import ProtectedRoute from "./Account/ProtectedRoute";
 import Session from "./Account/Session";
 import * as userClient from "./Account/client";
 import * as coursesClient from "./Courses/client";
-import { useSelector } from "react-redux";
+import * as enrollmentsClient from "./Enrollments/client";
+import { useDispatch, useSelector } from "react-redux";
+import { enroll } from "./Enrollments/reducer";
 
 export default function Kambaz() {
   const [courses, setCourses] = useState<any[]>([]);
   const [allCourses, setAllCourses] = useState<any[]>([]);
   const { currentUser } = useSelector((state: any) => state.accountReducer);
+
+  const dispatch = useDispatch();
 
   const enrollments = useSelector(
     (state: any) => state.enrollmentsReducer.enrollments
@@ -53,7 +57,13 @@ export default function Kambaz() {
   });
   const addNewCourse = async () => {
     const newCourse = await userClient.createCourse(course);
-    setCourses([...courses, newCourse]);
+    setAllCourses([...allCourses, newCourse]);
+    setCourses([...courses, newCourse]); // optional, depends on how you're tracking "my" courses
+
+    if (currentUser?.role === "FACULTY") {
+      await enrollmentsClient.enrollInCourse(currentUser._id, newCourse._id);
+      dispatch(enroll({ user: currentUser._id, course: newCourse._id })); // ✅ ensures it's added to enrolledCourses
+    }
   };
   const deleteCourse = async (courseId: string) => {
     await coursesClient.deleteCourse(courseId);
@@ -63,15 +73,8 @@ export default function Kambaz() {
 
   const updateCourse = async () => {
     await coursesClient.updateCourse(course);
-    setCourses(
-      courses.map((c) => {
-        if (c._id === course._id) {
-          return course;
-        } else {
-          return c;
-        }
-      })
-    );
+    setCourses(courses.map((c) => (c._id === course._id ? course : c)));
+    setAllCourses(allCourses.map((c) => (c._id === course._id ? course : c)));
   };
   return (
     <Session>
