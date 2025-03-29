@@ -4,10 +4,13 @@ import { FaTrash, FaUserCircle } from "react-icons/fa";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import * as userClient from "../../Users/client";
+import { useSelector } from "react-redux";
 
 export default function PeopleTable() {
   const { cid } = useParams();
   const [users, setUsers] = useState<any[]>([]);
+
+  const { currentUser } = useSelector((state: any) => state.accountReducer);
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -60,12 +63,14 @@ export default function PeopleTable() {
                 {user.totalActivity}
               </td>
               <td>
-                <button
-                  className="btn btn-danger float-end me-2"
-                  onClick={() => handleDeleteUser(user._id)}
-                >
-                  <FaTrash />
-                </button>
+                {currentUser?.role === "FACULTY" && (
+                  <button
+                    className="btn btn-danger float-end me-2"
+                    onClick={() => handleDeleteUser(user._id)}
+                  >
+                    <FaTrash />
+                  </button>
+                )}
               </td>
             </tr>
           ))}
