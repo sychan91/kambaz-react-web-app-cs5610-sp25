@@ -26,12 +26,18 @@ export default function TOC() {
         ))}
       </Nav.Item>
       <Nav.Item>
-        <Nav.Link href="https://github.com/sychan91/kambaz-react-web-app-cs5610-sp25/tree/main">
+        <Nav.Link
+          href="https://github.com/sychan91/kambaz-react-web-app-cs5610-sp25/tree/main"
+          active={false}
+        >
           React Github Repo
         </Nav.Link>
       </Nav.Item>
       <Nav.Item>
-        <Nav.Link href="https://github.com/sychan91/kambaz-node-server-app.git">
+        <Nav.Link
+          href="https://github.com/sychan91/kambaz-node-server-app.git"
+          active={false}
+        >
           Server Github Repo
         </Nav.Link>
       </Nav.Item>
