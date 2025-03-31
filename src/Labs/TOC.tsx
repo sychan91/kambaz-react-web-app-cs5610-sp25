@@ -27,7 +27,12 @@ export default function TOC() {
       </Nav.Item>
       <Nav.Item>
         <Nav.Link href="https://github.com/sychan91/kambaz-react-web-app-cs5610-sp25/tree/main">
-          My GitHub Repo
+          React Github Repo
+        </Nav.Link>
+      </Nav.Item>
+      <Nav.Item>
+        <Nav.Link href="https://github.com/sychan91/kambaz-node-server-app.git">
+          Server Github Repo
         </Nav.Link>
       </Nav.Item>
       <Nav.Item>
