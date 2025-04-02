@@ -42,6 +42,14 @@ export default function TOC() {
         </Nav.Link>
       </Nav.Item>
       <Nav.Item>
+        <Nav.Link
+          href="https://kambaz-node-server-app-vx2e.onrender.com"
+          active={false}
+        >
+          Server Root
+        </Nav.Link>
+      </Nav.Item>
+      <Nav.Item>
         <Nav.Link as={Link} to="/Kambaz" id="wd-k">
           Kambaz
         </Nav.Link>
