@@ -1,31 +1,31 @@
 import { Table } from "react-bootstrap";
-import { FaTrash, FaUserCircle } from "react-icons/fa";
+import { FaUserCircle } from "react-icons/fa";
 // import { db } from "../../Database";
-import { useParams } from "react-router-dom";
-import { useState, useEffect } from "react";
-import * as userClient from "../../Users/client";
-import { useSelector } from "react-redux";
+// import { useParams } from "react-router-dom";
+// import { useState, useEffect } from "react";
+// import * as userClient from "../../Users/client";
+// import { useSelector } from "react-redux";
 
-export default function PeopleTable() {
-  const { cid } = useParams();
-  const [users, setUsers] = useState<any[]>([]);
+export default function PeopleTable({ users = [] }: { users?: any[] }) {
+  // const { cid } = useParams();
+  // const [users, setUsers] = useState<any[]>([]);
 
-  const { currentUser } = useSelector((state: any) => state.accountReducer);
+  // const { currentUser } = useSelector((state: any) => state.accountReducer);
 
-  useEffect(() => {
-    const fetchUsers = async () => {
-      const result = await userClient.findUsersInCourse(cid!);
-      setUsers(result);
-    };
-    if (cid) fetchUsers();
-  }, [cid]);
+  // useEffect(() => {
+  //   const fetchUsers = async () => {
+  //     const result = await userClient.findUsersInCourse(cid!);
+  //     setUsers(result);
+  //   };
+  //   if (cid) fetchUsers();
+  // }, [cid]);
 
   // const { users, enrollments } = db;
 
-  const handleDeleteUser = async (uid: string) => {
-    await userClient.deleteUser(uid);
-    setUsers(users.filter((user) => user._id !== uid));
-  };
+  // const handleDeleteUser = async (uid: string) => {
+  //   await userClient.deleteUser(uid);
+  //   setUsers(users.filter((user) => user._id !== uid));
+  // };
 
   return (
     <div id="wd-people-table">
@@ -38,7 +38,6 @@ export default function PeopleTable() {
             <th>Role</th>
             <th>Last Activity</th>
             <th>Total Activity</th>
-            <th>Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -61,16 +60,6 @@ export default function PeopleTable() {
               </td>
               <td className="wd-total-activity wd-f-small">
                 {user.totalActivity}
-              </td>
-              <td>
-                {currentUser?.role === "FACULTY" && (
-                  <button
-                    className="btn btn-danger float-end me-2"
-                    onClick={() => handleDeleteUser(user._id)}
-                  >
-                    <FaTrash />
-                  </button>
-                )}
               </td>
             </tr>
           ))}

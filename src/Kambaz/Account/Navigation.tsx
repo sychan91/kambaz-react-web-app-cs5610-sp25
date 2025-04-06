@@ -18,6 +18,16 @@ export default function AccountNavigation() {
           {link}
         </ListGroup.Item>
       ))}
+      {currentUser && currentUser.role === "ADMIN" && (
+        <ListGroup.Item
+          active={pathname.includes("Users")}
+          className="border-0 text-danger bg-color-white"
+          as={Link}
+          to={`/Kambaz/Account/Users`}
+        >
+          Users
+        </ListGroup.Item>
+      )}
     </ListGroup>
   );
 }
