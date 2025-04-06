@@ -12,7 +12,7 @@ import * as userClient from "./Account/client";
 import * as coursesClient from "./Courses/client";
 import * as enrollmentsClient from "./Enrollments/client";
 import { useDispatch, useSelector } from "react-redux";
-import { enroll } from "./Enrollments/reducer";
+import { enroll, setEnrollments } from "./Enrollments/reducer";
 
 export default function Kambaz() {
   const [courses, setCourses] = useState<any[]>([]);
@@ -31,13 +31,28 @@ export default function Kambaz() {
     )
   );
 
+  console.log("Redux enrollments:", enrollments);
+  console.log("allCourses state:", allCourses);
+  console.log("Computed enrolledCourses:", enrolledCourses);
+
   useEffect(() => {
     const fetchCourses = async () => {
       try {
         const myCourses = await userClient.findMyCourses(); // Enrolled
         const everyCourse = await coursesClient.fetchAllCourses(); // All
+        const enrolledCourses = await enrollmentsClient.findEnrolledCourses(
+          currentUser._id
+        );
+
         setCourses(myCourses);
         setAllCourses(everyCourse);
+
+        const userEnrollments = enrolledCourses.map((course: any) => ({
+          user: currentUser._id,
+          course: course._id,
+        }));
+        console.log("Enrollment objects for Redux:", userEnrollments);
+        dispatch(setEnrollments(userEnrollments));
       } catch (error) {
         console.error("Failed to fetch courses:", error);
       }
@@ -45,7 +60,7 @@ export default function Kambaz() {
     if (currentUser) {
       fetchCourses();
     }
-  }, [currentUser]);
+  }, [currentUser, dispatch]);
   const [course, setCourse] = useState<any>({
     _id: "0",
     name: "New Course",
@@ -56,13 +71,14 @@ export default function Kambaz() {
     description: "New Description",
   });
   const addNewCourse = async () => {
-    const newCourse = await userClient.createCourse(course);
+    // const newCourse = await userClient.createCourse(course);
+    const newCourse = await coursesClient.createCourse(course);
     setAllCourses([...allCourses, newCourse]);
     setCourses([...courses, newCourse]); // optional, depends on how you're tracking "my" courses
 
     if (currentUser?.role === "FACULTY") {
       await enrollmentsClient.enrollInCourse(currentUser._id, newCourse._id);
-      dispatch(enroll({ user: currentUser._id, course: newCourse._id })); // ✅ ensures it's added to enrolledCourses
+      dispatch(enroll({ user: currentUser._id, course: newCourse._id })); // ensures it's added to enrolledCourses
     }
   };
   const deleteCourse = async (courseId: string) => {

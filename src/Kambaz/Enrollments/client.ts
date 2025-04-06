@@ -18,6 +18,6 @@ export const unenrollFromCourse = async (userId: string, courseId: string) => {
 };
 
 export const findEnrolledCourses = async (userId: string) => {
-  const { data } = await axios.get(`${USERS_API}/${userId}/enrollments`);
+  const { data } = await axios.get(`${USERS_API}/${userId}/courses`);
   return data;
 };
