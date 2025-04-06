@@ -28,6 +28,15 @@ export default function Modules() {
   );
   const dispatch = useDispatch();
 
+  const addModuleHandler = async () => {
+    const newModule = await courseClient.createModuleForCourse(cid!, {
+      name: moduleName,
+      course: cid,
+    });
+    dispatch(addModule(newModule));
+    setModuleName("");
+  };
+
   const fetchModulesForCourse = async () => {
     const modules = await courseClient.findModulesForCourse(cid!);
     dispatch(setModules(modules));
@@ -45,12 +54,12 @@ export default function Modules() {
     fetchModules();
   }, []);
 
-  const createModuleForCourse = async () => {
-    if (!cid) return;
-    const newModule = { name: moduleName, course: cid };
-    const module = await coursesClient.createModuleForCourse(cid, newModule);
-    dispatch(addModule(module));
-  };
+  // const createModuleForCourse = async () => {
+  //   if (!cid) return;
+  //   const newModule = { name: moduleName, course: cid };
+  //   const module = await coursesClient.createModuleForCourse(cid, newModule);
+  //   dispatch(addModule(module));
+  // };
 
   const removeModule = async (moduleId: string) => {
     await modulesClient.deleteModule(moduleId);
@@ -67,7 +76,7 @@ export default function Modules() {
         <ModulesControls
           setModuleName={setModuleName}
           moduleName={moduleName}
-          addModule={createModuleForCourse}
+          addModule={addModuleHandler}
         />
       </div>
       <ListGroup className="rounded-0 wd-top-padding wd-module-padding">
