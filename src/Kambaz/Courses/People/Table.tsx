@@ -1,5 +1,7 @@
 import { Table } from "react-bootstrap";
 import { FaUserCircle } from "react-icons/fa";
+import PeopleDetails from "./Details";
+import { Link } from "react-router-dom";
 // import { db } from "../../Database";
 // import { useParams } from "react-router-dom";
 // import { useState, useEffect } from "react";
@@ -29,6 +31,7 @@ export default function PeopleTable({ users = [] }: { users?: any[] }) {
 
   return (
     <div id="wd-people-table">
+      <PeopleDetails />
       <Table striped className="wd-f-small">
         <thead>
           <tr>
@@ -44,13 +47,18 @@ export default function PeopleTable({ users = [] }: { users?: any[] }) {
           {users.map((user: any) => (
             <tr key={user._id}>
               <td className="wd-full-name text-nowrap">
-                <FaUserCircle className="me-2 fs-2 text-secondary" />
-                <span className="wd-first-name text-danger wd-f-small">
-                  {user.firstName}
-                </span>{" "}
-                <span className="wd-last-name text-danger wd-f-small">
-                  {user.lastName}
-                </span>
+                <Link
+                  to={`/Kambaz/Account/Users/${user._id}`}
+                  className="text-decoration-none"
+                >
+                  <FaUserCircle className="me-2 fs-2 text-secondary" />
+                  <span className="wd-first-name text-danger wd-f-small">
+                    {user.firstName}
+                  </span>{" "}
+                  <span className="wd-last-name text-danger wd-f-small">
+                    {user.lastName}
+                  </span>
+                </Link>
               </td>
               <td className="wd-login-id wd-f-small">{user.loginId}</td>
               <td className="wd-section wd-f-small">{user.section}</td>
