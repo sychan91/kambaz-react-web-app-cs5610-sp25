@@ -6,6 +6,7 @@ import ModuleControlBtns from "./ModuleControlBtns";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import * as modulesClient from "./client";
+import * as courseClient from "../client";
 // import * as db from "../../Database";
 import {
   addModule,
@@ -26,6 +27,15 @@ export default function Modules() {
     state.modules.modules.filter((module: any) => module.course === cid)
   );
   const dispatch = useDispatch();
+
+  const fetchModulesForCourse = async () => {
+    const modules = await courseClient.findModulesForCourse(cid!);
+    dispatch(setModules(modules));
+  };
+
+  useEffect(() => {
+    fetchModulesForCourse();
+  }, [cid]);
 
   const fetchModules = async () => {
     const modules = await coursesClient.findModulesForCourse(cid as string);
