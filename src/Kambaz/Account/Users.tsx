@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import PeopleTable from "../Courses/People/Table";
 import * as client from "./client";
 import { FormControl } from "react-bootstrap";
+import PeopleDetails from "../Courses/People/Details";
 
 export default function Users() {
   const [users, setUsers] = useState<any[]>([]);
@@ -39,6 +40,7 @@ export default function Users() {
   }, [uid]);
   return (
     <div>
+      <PeopleDetails fetchUsers={fetchUsers} />
       <h3>Users</h3>
       <FormControl
         onChange={(e) => filterUsersByName(e.target.value)}

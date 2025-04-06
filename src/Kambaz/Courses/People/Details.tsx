@@ -4,10 +4,21 @@ import { IoCloseSharp } from "react-icons/io5";
 import { useParams, useNavigate } from "react-router";
 // import { Link } from "react-router-dom";
 import * as client from "../../Account/client";
-export default function PeopleDetails() {
+export default function PeopleDetails({
+  fetchUsers,
+}: {
+  fetchUsers: () => void;
+}) {
   const { uid } = useParams();
   const [user, setUser] = useState<any>({});
   const navigate = useNavigate();
+
+  const deleteUser = async (uid: string) => {
+    await client.deleteUser(uid);
+    fetchUsers();
+    navigate(`/Kambaz/Account/Users`);
+  };
+
   const fetchUser = async () => {
     if (!uid) return;
     const user = await client.findUserById(uid);
@@ -20,7 +31,7 @@ export default function PeopleDetails() {
   return (
     <div className="wd-people-details position-fixed top-0 end-0 bottom-0 bg-white p-4 shadow w-25">
       <button
-        onClick={() => navigate(-1)}
+        onClick={() => navigate(`/Kambaz/Account/Users`)}
         className="btn position-fixed end-0 top-0 wd-close-details"
       >
         <IoCloseSharp className="fs-1" />{" "}
@@ -40,7 +51,19 @@ export default function PeopleDetails() {
       <b>Section:</b> <span className="wd-section"> {user.section} </span>{" "}
       <br />
       <b>Total Activity:</b>{" "}
-      <span className="wd-total-activity">{user.totalActivity}</span>{" "}
+      <span className="wd-total-activity">{user.totalActivity}</span> <hr />
+      <button
+        onClick={() => deleteUser(uid)}
+        className="btn btn-danger float-end wd-delete"
+      >
+        Delete
+      </button>
+      <button
+        onClick={() => navigate(`/Kambaz/Account/Users`)}
+        className="btn btn-secondary float-end me-2 wd-cancel"
+      >
+        Cancel
+      </button>
     </div>
   );
 }

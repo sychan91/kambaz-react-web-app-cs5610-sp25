@@ -1,6 +1,5 @@
 import { Table } from "react-bootstrap";
 import { FaUserCircle } from "react-icons/fa";
-import PeopleDetails from "./Details";
 import { Link } from "react-router-dom";
 // import { db } from "../../Database";
 // import { useParams } from "react-router-dom";
@@ -31,7 +30,6 @@ export default function PeopleTable({ users = [] }: { users?: any[] }) {
 
   return (
     <div id="wd-people-table">
-      <PeopleDetails />
       <Table striped className="wd-f-small">
         <thead>
           <tr>
