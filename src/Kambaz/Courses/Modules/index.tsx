@@ -28,6 +28,11 @@ export default function Modules() {
   );
   const dispatch = useDispatch();
 
+  const deleteModuleHandler = async (moduleId: string) => {
+    await modulesClient.deleteModule(moduleId);
+    dispatch(deleteModule(moduleId));
+  };
+
   const addModuleHandler = async () => {
     const newModule = await courseClient.createModuleForCourse(cid!, {
       name: moduleName,
@@ -61,10 +66,10 @@ export default function Modules() {
   //   dispatch(addModule(module));
   // };
 
-  const removeModule = async (moduleId: string) => {
-    await modulesClient.deleteModule(moduleId);
-    dispatch(deleteModule(moduleId));
-  };
+  // const removeModule = async (moduleId: string) => {
+  //   await modulesClient.deleteModule(moduleId);
+  //   dispatch(deleteModule(moduleId));
+  // };
 
   const saveModule = async (module: any) => {
     await modulesClient.updateModule(module);
@@ -105,7 +110,7 @@ export default function Modules() {
 
               <ModuleControlBtns
                 moduleId={module._id}
-                deleteModule={(moduleId) => removeModule(moduleId)}
+                deleteModule={(moduleId) => deleteModuleHandler(moduleId)}
                 editModule={(moduleId) => dispatch(editModule(moduleId))}
               />
             </div>
