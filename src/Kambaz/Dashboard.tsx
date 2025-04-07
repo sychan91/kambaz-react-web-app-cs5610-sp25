@@ -58,7 +58,10 @@ export default function Dashboard({
   const displayedCourses = showAllCourses ? allCourses : courses; // Show only enrolled courses
 
   const isEnrolledIn = (courseId: string) =>
-    courses.some((c) => c._id === courseId);
+    enrollments.some(
+      (e: any) => e.user === currentUser._id && e.course === courseId
+    );
+  // courses.some((c) => c._id === courseId);
 
   // Toggle enrollment
   const toggleEnrollment = async (courseId: string) => {
