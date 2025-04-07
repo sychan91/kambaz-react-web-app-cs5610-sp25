@@ -31,7 +31,7 @@ export default function Assignments() {
 
   useEffect(() => {
     fetchAssignments();
-  }, [currentUser]);
+  }, [cid]);
 
   // useEffect(() => {
   //   const fetchAssignments = async () => {
