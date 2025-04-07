@@ -1,5 +1,6 @@
 import { Table } from "react-bootstrap";
 import { FaUserCircle } from "react-icons/fa";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 // import { db } from "../../Database";
 // import { useParams } from "react-router-dom";
@@ -8,7 +9,7 @@ import { Link } from "react-router-dom";
 // import { useSelector } from "react-redux";
 
 export default function PeopleTable({ users = [] }: { users?: any[] }) {
-  console.log("Rendering PeopleTable with users:", users);
+  const { currentUser } = useSelector((state: any) => state.accountReducer);
   // const { cid } = useParams();
   // const [users, setUsers] = useState<any[]>([]);
 
@@ -48,18 +49,30 @@ export default function PeopleTable({ users = [] }: { users?: any[] }) {
             .map((user: any) => (
               <tr key={user._id}>
                 <td className="wd-full-name text-nowrap">
-                  <Link
-                    to={`/Kambaz/Account/Users/${user._id}`}
-                    className="text-decoration-none"
-                  >
-                    <FaUserCircle className="me-2 fs-2 text-secondary" />
-                    <span className="wd-first-name text-danger wd-f-small">
-                      {user.firstName}
-                    </span>{" "}
-                    <span className="wd-last-name text-danger wd-f-small">
-                      {user.lastName}
-                    </span>
-                  </Link>
+                  {currentUser?.role === "ADMIN" ? (
+                    <Link
+                      to={`/Kambaz/Account/Users/${user._id}`}
+                      className="text-decoration-none"
+                    >
+                      <FaUserCircle className="me-2 fs-2 text-secondary" />
+                      <span className="wd-first-name text-danger wd-f-small">
+                        {user.firstName}
+                      </span>{" "}
+                      <span className="wd-last-name text-danger wd-f-small">
+                        {user.lastName}
+                      </span>
+                    </Link>
+                  ) : (
+                    <>
+                      <FaUserCircle className="me-2 fs-2 text-secondary" />
+                      <span className="wd-first-name text-danger wd-f-small">
+                        {user.firstName}
+                      </span>{" "}
+                      <span className="wd-last-name text-danger wd-f-small">
+                        {user.lastName}
+                      </span>
+                    </>
+                  )}
                 </td>
                 <td className="wd-login-id wd-f-small">{user.loginId}</td>
                 <td className="wd-section wd-f-small">{user.section}</td>
