@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 // import { useSelector } from "react-redux";
 
 export default function PeopleTable({ users = [] }: { users?: any[] }) {
+  console.log("Rendering PeopleTable with users:", users);
   // const { cid } = useParams();
   // const [users, setUsers] = useState<any[]>([]);
 
@@ -42,33 +43,35 @@ export default function PeopleTable({ users = [] }: { users?: any[] }) {
           </tr>
         </thead>
         <tbody>
-          {users.map((user: any) => (
-            <tr key={user._id}>
-              <td className="wd-full-name text-nowrap">
-                <Link
-                  to={`/Kambaz/Account/Users/${user._id}`}
-                  className="text-decoration-none"
-                >
-                  <FaUserCircle className="me-2 fs-2 text-secondary" />
-                  <span className="wd-first-name text-danger wd-f-small">
-                    {user.firstName}
-                  </span>{" "}
-                  <span className="wd-last-name text-danger wd-f-small">
-                    {user.lastName}
-                  </span>
-                </Link>
-              </td>
-              <td className="wd-login-id wd-f-small">{user.loginId}</td>
-              <td className="wd-section wd-f-small">{user.section}</td>
-              <td className="wd-role wd-f-small">{user.role}</td>
-              <td className="wd-last-activity wd-f-small">
-                {user.lastActivity}
-              </td>
-              <td className="wd-total-activity wd-f-small">
-                {user.totalActivity}
-              </td>
-            </tr>
-          ))}
+          {users
+            .filter((user) => user !== null)
+            .map((user: any) => (
+              <tr key={user._id}>
+                <td className="wd-full-name text-nowrap">
+                  <Link
+                    to={`/Kambaz/Account/Users/${user._id}`}
+                    className="text-decoration-none"
+                  >
+                    <FaUserCircle className="me-2 fs-2 text-secondary" />
+                    <span className="wd-first-name text-danger wd-f-small">
+                      {user.firstName}
+                    </span>{" "}
+                    <span className="wd-last-name text-danger wd-f-small">
+                      {user.lastName}
+                    </span>
+                  </Link>
+                </td>
+                <td className="wd-login-id wd-f-small">{user.loginId}</td>
+                <td className="wd-section wd-f-small">{user.section}</td>
+                <td className="wd-role wd-f-small">{user.role}</td>
+                <td className="wd-last-activity wd-f-small">
+                  {user.lastActivity}
+                </td>
+                <td className="wd-total-activity wd-f-small">
+                  {user.totalActivity}
+                </td>
+              </tr>
+            ))}
         </tbody>
       </Table>
     </div>
