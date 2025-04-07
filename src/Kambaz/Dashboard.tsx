@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { enroll, unenroll, setEnrollments } from "./Enrollments/reducer";
 import { useEffect, useState } from "react";
 import * as enrollmentsClient from "./Enrollments/client";
+import { enrollIntoCourse, unenrollFromCourse } from "./Account/client";
 
 export default function Dashboard({
   courses,
@@ -61,16 +62,29 @@ export default function Dashboard({
 
   // Toggle enrollment
   const toggleEnrollment = async (courseId: string) => {
-    const isEnrolled = enrollments.some(
-      (e: any) => e.user === currentUser._id && e.course === courseId
-    );
+    // const isEnrolled = enrollments.some(
+    //   (e: any) => e.user === currentUser._id && e.course === courseId
+    // );
 
-    if (isEnrolled) {
-      await enrollmentsClient.unenrollFromCourse(currentUser._id, courseId);
-      dispatch(unenroll({ user: currentUser._id, course: courseId }));
-    } else {
-      await enrollmentsClient.enrollInCourse(currentUser._id, courseId);
-      dispatch(enroll({ user: currentUser._id, course: courseId }));
+    // if (isEnrolled) {
+    //   await enrollmentsClient.unenrollFromCourse(currentUser._id, courseId);
+    //   dispatch(unenroll({ user: currentUser._id, course: courseId }));
+    // } else {
+    //   await enrollmentsClient.enrollInCourse(currentUser._id, courseId);
+    //   dispatch(enroll({ user: currentUser._id, course: courseId }));
+    // }
+    const isEnrolled = isEnrolledIn(courseId);
+
+    try {
+      if (isEnrolled) {
+        await unenrollFromCourse(currentUser._id, courseId);
+        dispatch(unenroll({ user: currentUser._id, course: courseId }));
+      } else {
+        await enrollIntoCourse(currentUser._id, courseId);
+        dispatch(enroll({ user: currentUser._id, course: courseId }));
+      }
+    } catch (error) {
+      console.error(error);
     }
   };
 

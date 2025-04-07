@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 // import { db } from "./Database";
 import ProtectedRoute from "./Account/ProtectedRoute";
 import Session from "./Account/Session";
-import * as userClient from "./Account/client";
+import * as accountClient from "./Account/client";
 import * as coursesClient from "./Courses/client";
 import * as enrollmentsClient from "./Enrollments/client";
 import { useDispatch, useSelector } from "react-redux";
@@ -31,16 +31,40 @@ export default function Kambaz() {
     )
   );
 
-  console.log("Redux enrollments:", enrollments);
-  console.log("allCourses state:", allCourses);
-  console.log("Computed enrolledCourses:", enrolledCourses);
+  // const findCoursesForUser = async () => {
+  //   try {
+  //     const courses = await userClient.findCoursesForUser(currentUser._id);
+  //     setCourses(courses);
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // };
+
+  // const fetchCourses = async () => {
+  //   try {
+  //     const allCourses = await coursesClient.fetchAllCourses();
+  //     const enrolledCourses = await userClient.findCoursesForUser(
+  //       currentUser._id
+  //     );
+  //     const courses = allCourses.map((course: any) => {
+  //       if (enrolledCourses.find((c: any) => c._id === course._id)) {
+  //         return { ...course, enrolled: true };
+  //       } else {
+  //         return course;
+  //       }
+  //     });
+  //     setCourses(courses);
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // };
 
   useEffect(() => {
     const fetchCourses = async () => {
       try {
-        const myCourses = await userClient.findMyCourses(); // Enrolled
+        const myCourses = await accountClient.findMyCourses(); // Enrolled
         const everyCourse = await coursesClient.fetchAllCourses(); // All
-        const enrolledCourses = await enrollmentsClient.findEnrolledCourses(
+        const enrolledCourses = await accountClient.findCoursesForUser(
           currentUser._id
         );
 
@@ -61,6 +85,13 @@ export default function Kambaz() {
       fetchCourses();
     }
   }, [currentUser, dispatch]);
+  //   if (enrolling) {
+  //     fetchCourses();
+  //   } else {
+  //     findCoursesForUser();
+  //   }
+  // }, [currentUser, enrolling]);
+
   const [course, setCourse] = useState<any>({
     _id: "0",
     name: "New Course",
