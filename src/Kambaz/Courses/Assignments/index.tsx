@@ -61,6 +61,7 @@ export default function Assignments() {
     setShowModal(false);
     setSelectedAssignment(null);
   };
+
   return (
     <div id="wd-assignments">
       <div className="wd-module-control-padding">
