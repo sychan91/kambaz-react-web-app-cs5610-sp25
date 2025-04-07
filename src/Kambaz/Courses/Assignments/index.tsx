@@ -111,13 +111,15 @@ export default function Assignments() {
                     <br />
                     <span className="wd-assignment-f-small">
                       <span className="text-danger">Multiple Modules</span> |{" "}
-                      <b>Not available until</b> {assignment.availableUntil} at{" "}
-                      {assignment.availableTime}
+                      <b>Not available until</b>{" "}
+                      {new Date(assignment.availableUntil).toLocaleDateString()}{" "}
+                      at 12:00 AM
                     </span>
                     <br />
                     <span className="wd-assignment-f-small">
-                      <b>Due</b> {assignment.dueDate} at {assignment.dueTime} |{" "}
-                      {assignment.points}pts
+                      <b>Due</b>{" "}
+                      {new Date(assignment.dueDate).toLocaleDateString()} at{" "}
+                      11:59pm | {assignment.points}pts
                     </span>
                   </span>
                 </div>
