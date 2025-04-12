@@ -198,8 +198,9 @@ export default function Dashboard({
                       >
                         {course.description}
                       </Card.Text>
-                      {isEnrolled ||
-                        (isAdmin && <Button variant="primary">Go</Button>)}
+                      {(isEnrolled || isAdmin) && (
+                        <Button variant="primary">Go</Button>
+                      )}
                       {/*Enrollment/Unenrollment Buttons for Students*/}
                       {isStudent && (
                         <Button
