@@ -53,9 +53,10 @@ export default function Dashboard({
 
   const isFaculty = currentUser.role === "FACULTY";
   const isStudent = currentUser.role === "STUDENT";
+  const isAdmin = currentUser.role === "ADMIN";
 
   // Filter courses based on enrollment status
-  const displayedCourses = showAllCourses ? allCourses : courses; // Show only enrolled courses
+  const displayedCourses = isAdmin || showAllCourses ? allCourses : courses; // Show only enrolled courses
 
   const isEnrolledIn = (courseId: string) =>
     enrollments.some(
@@ -157,7 +158,7 @@ export default function Dashboard({
                   <Link
                     className="wd-dashboard-course-link text-decoration-none text-dark"
                     to={
-                      isEnrolled || isFaculty
+                      isEnrolled || isFaculty || isAdmin
                         ? `/Kambaz/Courses/${course._id}/Home`
                         : "#"
                     }
@@ -197,7 +198,8 @@ export default function Dashboard({
                       >
                         {course.description}
                       </Card.Text>
-                      {isEnrolled && <Button variant="primary">Go</Button>}
+                      {isEnrolled ||
+                        (isAdmin && <Button variant="primary">Go</Button>)}
                       {/*Enrollment/Unenrollment Buttons for Students*/}
                       {isStudent && (
                         <Button
