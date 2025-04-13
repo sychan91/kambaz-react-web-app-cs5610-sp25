@@ -13,12 +13,14 @@ export default function PeopleDetails({
   const { uid } = useParams();
   const [user, setUser] = useState<any>({});
   const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [role, setRole] = useState("");
   const [editing, setEditing] = useState(false);
   const navigate = useNavigate();
 
   const saveUser = async () => {
     const [firstName, lastName] = name.split(" ");
-    const updatedUser = { ...user, firstName, lastName };
+    const updatedUser = { ...user, firstName, lastName, email, role };
     await client.updateUser(updatedUser);
     setUser(updatedUser);
     setEditing(false);
@@ -35,6 +37,10 @@ export default function PeopleDetails({
     if (!uid) return;
     const user = await client.findUserById(uid);
     setUser(user);
+    setName(`${user.firstName} ${user.lastName}`);
+    setEmail(user.email);
+    setRole(user.role);
+    setEditing(false);
   };
   useEffect(() => {
     if (uid) fetchUser();
@@ -84,7 +90,37 @@ export default function PeopleDetails({
           />
         )}
       </div>
-      <b>Roles:</b> <span className="wd-roles"> {user.role} </span> <br />
+      <b>Roles:</b>
+      {""}
+      {editing ? (
+        <select
+          className="form-select w-50"
+          value={role}
+          onChange={(e) => setRole(e.target.value)}
+        >
+          <option value="STUDENT">Student</option>
+          <option value="FACULTY">Faculty</option>
+          <option value="TA">TA</option>
+          <option value="ADMIN">Admin</option>
+          <option value="USER">User</option>
+        </select>
+      ) : (
+        <span className="wd-roles"> {user.role} </span>
+      )}{" "}
+      <br />
+      <b>Email:</b>
+      {""}
+      {editing ? (
+        <input
+          type="email"
+          className="form-control w-50"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+      ) : (
+        <span className="wd-email">{user.email}</span>
+      )}
+      <br />
       <b>Login ID:</b> <span className="wd-login-id"> {user.loginId} </span>{" "}
       <br />
       <b>Section:</b> <span className="wd-section"> {user.section} </span>{" "}
